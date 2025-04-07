@@ -64,4 +64,12 @@ class ToDoController extends Controller
         $this->toDoService->destroy($todo->id);
         return to_route('todos.index')->with('success', 'ToDo deleted successfully.');
     }
+
+    public function toggleCompleted(int $todo)
+    {
+        // $todo = $this->toDoService->getById($todo);
+        // $todo->completed = !$todo->completed;
+        // $todo->save();
+        // return to_route('todos.index')->with('success', 'ToDo updated successfully.');
+    }
 }
