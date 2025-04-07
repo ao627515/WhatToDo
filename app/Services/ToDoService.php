@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Interfaces\Repositories\ToDoRepositoryInterface;
 use App\Interfaces\Services\ToDoServiceInterface;
+use App\Models\ToDo;
 
 class ToDoService implements ToDoServiceInterface
 {
@@ -28,5 +29,26 @@ class ToDoService implements ToDoServiceInterface
         return [
             'todo' => $todo,
         ];
+    }
+
+    public function show(int $id, array $data = [])
+    {
+        $todo = $this->toDoRepository->getById($id);
+        return [
+            'todo' => $todo,
+        ];
+    }
+
+    // public function update(int $id, array $data = []): array
+    // {
+    //     $todo = $this->toDoRepository->update($id, $data);
+    //     return [
+    //         'todo' => $todo,
+    //     ];
+    // }
+
+    public function destroy(int $id)
+    {
+        return $this->toDoRepository->delete($id);
     }
 }

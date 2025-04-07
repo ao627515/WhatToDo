@@ -26,13 +26,6 @@ class ToDoController extends Controller
         return view('pages.todos.todos-index', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -53,14 +46,6 @@ class ToDoController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(ToDo $toDo)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(UpdateToDoRequest $request, ToDo $toDo)
@@ -73,6 +58,7 @@ class ToDoController extends Controller
      */
     public function destroy(ToDo $toDo)
     {
-        //
+        $this->toDoService->destroy($toDo->id);
+        return to_route('todos.index')->with('success', 'ToDo deleted successfully.');
     }
 }

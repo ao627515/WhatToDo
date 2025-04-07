@@ -3,7 +3,11 @@
 namespace App\Interfaces\Repositories;
 
 use App\Interfaces\Repositories\Methods\CreateInterface;
+use App\Interfaces\Repositories\Methods\DeleteInterface;
 use App\Interfaces\Repositories\Methods\GetAllInterface;
+use App\Interfaces\Repositories\Methods\GetByIdInterface;
 
 interface ToDoRepositoryInterface extends GetAllInterface,
-    CreateInterface {}
+    CreateInterface,
+    GetByIdInterface,
+    DeleteInterface {}
