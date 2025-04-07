@@ -31,6 +31,10 @@ class ToDoService implements ToDoServiceInterface
             $query->where('completed', $isCompleted);
         }
 
+        // Appliquer le tri par défaut
+        $query->orderBy('created_at', 'desc');
+
+
         // Récupérer les tâches filtrées
         return ['todos' => $query->get(), 'query' => $data['query'] ?? '', 'status' => $data['status'] ?? 'all'];
     }
