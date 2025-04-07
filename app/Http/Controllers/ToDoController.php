@@ -22,7 +22,8 @@ class ToDoController extends Controller
      */
     public function index()
     {
-        return view('pages.todos.todos-index');
+        $data = $this->toDoService->index();
+        return view('pages.todos.todos-index', $data);
     }
 
     /**

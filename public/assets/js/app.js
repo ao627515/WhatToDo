@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusFilter = document.getElementById('statusFilter');
     const searchBtn = document.getElementById('searchBtn');
     const newTaskInput = document.getElementById('newTaskInput');
-    const addTaskBtn = document.getElementById('addTaskBtn');
+    // const addTaskBtn = document.getElementById('addTaskBtn');
     const emptyStateAddBtn = document.getElementById('emptyStateAddBtn');
     const taskModal = document.getElementById('taskModal');
     const modalTitle = document.getElementById('modalTitle');
@@ -103,20 +103,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Ajouter une nouvelle tâche
-    function addTask() {
-        const title = newTaskInput.value.trim();
-        if (!title) return;
+    // function addTask() {
+    //     const title = newTaskInput.value.trim();
+    //     if (!title) return;
 
-        const newTask = {
-            id: Date.now(),
-            title: title,
-            status: 'pending'
-        };
+    //     const newTask = {
+    //         id: Date.now(),
+    //         title: title,
+    //         status: 'pending'
+    //     };
 
-        tasks.push(newTask);
-        newTaskInput.value = '';
-        renderTasks();
-    }
+    //     tasks.push(newTask);
+    //     newTaskInput.value = '';
+    //     renderTasks();
+    // }
 
     // Changer le statut d'une tâche (bascule terminé/non terminé)
     function toggleTaskStatus(taskId) {
@@ -194,11 +194,11 @@ document.addEventListener('DOMContentLoaded', () => {
     searchBtn.addEventListener('click', filterTasks);
     searchInput.addEventListener('input', filterTasks);
     statusFilter.addEventListener('change', filterTasks);
-    addTaskBtn.addEventListener('click', addTask);
+    // addTaskBtn.addEventListener('click', addTask);
     emptyStateAddBtn.addEventListener('click', openAddModal);
-    newTaskInput.addEventListener('keypress', e => {
-        if (e.key === 'Enter') addTask();
-    });
+    // newTaskInput.addEventListener('keypress', e => {
+    //     if (e.key === 'Enter') addTask();
+    // });
 
     cancelBtn.addEventListener('click', closeModal);
     taskForm.addEventListener('submit', saveTask);

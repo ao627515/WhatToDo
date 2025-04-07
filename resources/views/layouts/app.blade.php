@@ -26,10 +26,13 @@
                 <button class="btn-secondary" id="searchBtn">Rechercher</button>
             </div>
 
-            <div class="add-task">
-                <input type="text" id="newTaskInput" placeholder="Ajouter une nouvelle tâche...">
-                <button class="btn-primary" id="addTaskBtn">Ajouter</button>
-            </div>
+            <form action="{{ route('todos.store') }}" method="post">
+                @csrf
+                <div class="add-task">
+                    <input type="text" id="newTaskInput" placeholder="Ajouter une nouvelle tâche...">
+                    <button class="btn-primary" id="addTaskBtn">Ajouter</button>
+                </div>
+            </form>
 
             <ul class="tasks-list" id="tasksList">
                 <!-- Les tâches seront ajoutées ici dynamiquement -->

@@ -2,6 +2,6 @@
 
 namespace App\Interfaces\Services;
 
-interface ToDoServiceInterface
-{
-}
+use App\Interfaces\Services\Methods\IndexInterface;
+
+interface ToDoServiceInterface extends IndexInterface {}
