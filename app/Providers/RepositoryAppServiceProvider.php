@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Interfaces\Repositories\ToDoRepositoryInterface;
+use App\Repositories\ToDoRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryAppServiceProvider extends ServiceProvider
@@ -11,7 +13,7 @@ class RepositoryAppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        app()->bind(ToDoRepositoryInterface::class, ToDoRepository::class);
     }
 
     /**
