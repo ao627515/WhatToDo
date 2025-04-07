@@ -1,8 +1,9 @@
-<li class="task-item" data-id="1">
+<li class="task-item" data-id="{{ $todo->id }}">
     <div class="task-content">
-        <div class="task-checkbox completed"></div>
-        <span class="task-text completed">Finaliser la conception de la base de données</span>
-        <span class="status-badge status-completed">Terminé</span>
+        <div class="task-checkbox {{ $todo->completed ? 'completed' : '' }}"></div>
+        <span class="task-text {{ $todo->completed ? 'completed' : '' }}">{{ $todo->title }}</span>
+        <span
+            class="status-badge status-{{ $todo->completed ? 'completed' : 'in-progress' }}">{{ $todo->completed ? 'Terminer' : 'En cours' }}</span>
     </div>
     <div class="task-actions">
         <button class="btn-icon edit-btn">✏️</button>

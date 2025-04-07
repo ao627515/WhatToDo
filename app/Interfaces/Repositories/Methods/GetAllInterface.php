@@ -4,5 +4,5 @@ namespace App\Interfaces\Repositories\Methods;
 
 interface GetAllInterface
 {
-    public function getAll(array $column = ['*']): array;
+    public function getAll(array $column = ['*']);
 }

@@ -13,9 +13,9 @@ class ToDoRepository implements ToDoRepositoryInterface
     {
         $this->model = ToDo::class;
     }
-    public function getAll(array $column = ['*']): array
+    public function getAll(array $column = ['*'])
     {
-        return $this->model::all($column)->toArray();
+        return $this->model::all($column);
     }
 
     public function create(array $attributes = []): array

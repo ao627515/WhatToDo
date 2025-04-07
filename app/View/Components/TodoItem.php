@@ -10,18 +10,18 @@ use Illuminate\View\Component;
 class TodoItem extends Component
 {
     /**
-     * @var ToDo[]
+     * @var ToDo
      */
-    public array $todos;
+    public ToDo $todo;
 
 
     /**
      * Create a new component instance.
      */
     public function __construct(
-        array $todos = []
+        ToDo $todo
     ) {
-        $this->todos = $todos;
+        $this->todo = $todo;
     }
 
     /**

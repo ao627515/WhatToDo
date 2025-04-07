@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- @dump($errors->all()) --}}
+    {{-- @dd($todos) --}}
     <div class="todo-card">
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Rechercher une tâche...">
@@ -33,7 +33,7 @@
             <ul class="tasks-list" id="tasksList">
                 <!-- Les tâches seront ajoutées ici dynamiquement -->
                 @foreach ($todos as $todo)
-                    <x-todo-item :todos="$todo" />
+                    <x-todo-item :todo="$todo" />
                 @endforeach
             </ul>
         @endif
