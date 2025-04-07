@@ -50,6 +50,11 @@
         @method('DELETE')
     </form>
 
+    <form action="{{ route('todos.toggle.completed', ':id') }}" method="post" id="toggleForm" style="display: none;">
+        @csrf
+        @method('PATCH')
+    </form>
+
 
     <script src="{{ asset('assets/js/app.js') }}"></script>
 </body>

@@ -1,6 +1,7 @@
 <li class="task-item" data-id="{{ $todo->id }}">
     <div class="task-content">
-        <div class="task-checkbox {{ $todo->completed ? 'completed' : '' }}"></div>
+        <div class="task-checkbox {{ $todo->completed ? 'completed' : '' }}"
+            onclick="toggleTaskStatus({{ $todo->id }})"></div>
         <span class="task-text {{ $todo->completed ? 'completed' : '' }}">{{ $todo->title }}</span>
         <span
             class="status-badge status-{{ $todo->completed ? 'completed' : 'in-progress' }}">{{ $todo->completed ? 'Terminer' : 'En cours' }}</span>

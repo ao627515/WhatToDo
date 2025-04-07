@@ -6,6 +6,7 @@ use App\Interfaces\Services\Methods\DestroyInterface;
 use App\Interfaces\Services\Methods\IndexInterface;
 use App\Interfaces\Services\Methods\ShowInterface;
 use App\Interfaces\Services\Methods\StoreInterface;
+use App\Interfaces\Services\Methods\ToggleCompletedInterface;
 use App\Interfaces\Services\Methods\UpdateInterface;
 
 interface ToDoServiceInterface extends
@@ -13,4 +14,5 @@ interface ToDoServiceInterface extends
     StoreInterface,
     DestroyInterface,
     ShowInterface,
-    UpdateInterface {}
+    UpdateInterface,
+    ToggleCompletedInterface {}

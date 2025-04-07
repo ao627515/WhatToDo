@@ -18,6 +18,7 @@ const taskTitle = document.getElementById('taskTitle');
 const taskStatus = document.getElementById('taskStatus');
 const cancelBtn = document.getElementById('cancelBtn');
 const deleteForm = document.getElementById('deleteForm');
+const toggleForm = document.getElementById('toggleForm');
 const modalFormActioninitValue = taskForm.action;
 
 // Gestionnaires d'événements
@@ -61,7 +62,10 @@ function filterTasks() {
 
 // Changer le statut d'une tâche (bascule terminé/non terminé)
 function toggleTaskStatus(taskId) {
-    //
+    const action = toggleForm.action;
+    toggleForm.action = action.replace(':id', taskId);
+    toggleForm.submit();
+    toggleForm.action = action;
 }
 
 // Ouvrir la modal d'édition

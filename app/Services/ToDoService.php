@@ -51,4 +51,14 @@ class ToDoService implements ToDoServiceInterface
     {
         return $this->toDoRepository->delete($id);
     }
+
+    public function toggleCompleted(int|string $id)
+    {
+        $todo = $this->toDoRepository->getById($id);
+        $todo->completed = !$todo->completed;
+        $todo->save();
+        return [
+            'todo' => $todo,
+        ];
+    }
 }
