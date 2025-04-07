@@ -11,9 +11,11 @@
 </head>
 
 <body>
-    <main class="app-container">
-        @yield('content')
-    </main>
+    <div class="app-container">
+        <main class="app-content">
+            @yield('content')
+        </main>
+    </div>
     <script src="{{ asset('assets/js/app.js') }}"></script>
     @yield('js')
 </body>

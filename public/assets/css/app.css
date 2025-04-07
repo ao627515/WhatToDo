@@ -27,6 +27,7 @@ body {
     width: 100%;
     max-width: 450px;
     background-color: var(--white);
+    border: var(--zaffre), solid 1px;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
