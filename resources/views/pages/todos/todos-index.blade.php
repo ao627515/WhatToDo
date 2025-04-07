@@ -21,15 +21,20 @@
             </div>
         </form>
 
-        <ul class="tasks-list" id="tasksList">
-            <!-- Les tâches seront ajoutées ici dynamiquement -->
-        </ul>
-
-        <div class="empty-state" id="emptyState">
-            <img src="/api/placeholder/120/120" alt="Liste vide">
-            <h3>Aucune tâche pour le moment</h3>
-            <p>Ajoutez votre première tâche pour commencer</p>
-            <button class="btn-primary" id="emptyStateAddBtn">Ajouter une tâche</button>
-        </div>
+        @if (empty($todos))
+            <div class="empty-state" id="emptyState">
+                <img src="/api/placeholder/120/120" alt="Liste vide">
+                <h3>Aucune tâche pour le moment</h3>
+                <p>Ajoutez votre première tâche pour commencer</p>
+                <button class="btn-primary" id="emptyStateAddBtn">Ajouter une tâche</button>
+            </div>
+        @else
+            <ul class="tasks-list" id="tasksList">
+                <!-- Les tâches seront ajoutées ici dynamiquement -->
+                @foreach ($todos as $todo)
+                    <x-todo-item :todos="$todo" />
+                @endforeach
+            </ul>
+        @endif
     </div>
 @endsection
