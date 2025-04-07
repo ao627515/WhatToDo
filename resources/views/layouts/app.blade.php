@@ -17,11 +17,13 @@
     </div>
 
     <!-- Modal pour éditer/ajouter une tâche -->
+    {{-- <form  id="editForm"> --}}
+    {{-- @method('PUT') --}}
     <div class="modal" id="taskModal">
-        @csrf
         <div class="modal-content">
             <h2 id="modalTitle">Modifier la tâche</h2>
-            <form id="taskForm">
+            <form id="taskForm" action="{{ route('todos.index') }}" method="post">
+                @csrf
                 <input type="hidden" id="taskId">
                 <div class="form-group">
                     <label for="taskTitle">Titre de la tâche</label>
@@ -41,6 +43,7 @@
             </form>
         </div>
     </div>
+    {{-- </form> --}}
 
     <form action="{{ route('todos.index') }}" method="post" delete id="deleteForm" style="display: none;">
         @csrf

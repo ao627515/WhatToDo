@@ -6,7 +6,7 @@
             class="status-badge status-{{ $todo->completed ? 'completed' : 'in-progress' }}">{{ $todo->completed ? 'Terminer' : 'En cours' }}</span>
     </div>
     <div class="task-actions">
-        <button class="btn-icon edit-btn">✏️</button>
+        <button class="btn-icon edit-btn" onclick="openEditModal(event)">✏️</button>
         <button class="btn-icon delete-btn" onclick="deleteTask({{ $todo->id }})">🗑️</button>
     </div>
 </li>
