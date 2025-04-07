@@ -84,10 +84,10 @@ function openEditModal(e) {
     taskTitle.value = titleElement ? titleElement.textContent : '';
 
     // Vérifier le statut à l'aide de classList.contains (fonctionne en natif, contrairement à hasClass)
-    const statusBadge = target.querySelector('.status-badge');
-    taskStatus.value = statusBadge && statusBadge.classList.contains('status-completed')
-        ? 'completed'
-        : 'in-progress';
+    // const statusBadge = target.querySelector('.status-badge');
+    // taskStatus.value = statusBadge && statusBadge.classList.contains('status-completed')
+    //     ? 'completed'
+    //     : 'in-progress';
 
 
     // Affichage des informations pour le debug (à retirer ou adapter en production)

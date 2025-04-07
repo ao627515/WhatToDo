@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 interface DeleteInterface
 {
-    public function delete(int $id);
+    public function delete(string|int $id);
     // public function deleteByModel(Model $model): bool;
 }

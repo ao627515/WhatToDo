@@ -40,7 +40,7 @@ class ToDoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ToDo $toDo)
+    public function show(ToDo $todo)
     {
         //
     }
@@ -48,9 +48,11 @@ class ToDoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateToDoRequest $request, ToDo $toDo)
+    public function update(UpdateToDoRequest $request, int $todo)
     {
-        //
+        $validatedData = $request->validated();
+        $this->toDoService->update($todo, $validatedData);
+        return to_route('todos.index')->with('success', 'ToDo created successfully.');
     }
 
     /**

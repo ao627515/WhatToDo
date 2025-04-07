@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 interface DestroyInterface
 {
-    public function destroy(int $id);
+    public function destroy(string|int $id);
 }

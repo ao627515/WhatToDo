@@ -31,7 +31,7 @@ class ToDoService implements ToDoServiceInterface
         ];
     }
 
-    public function show(int $id, array $data = [])
+    public function show(string|int $id, array $data = [])
     {
         $todo = $this->toDoRepository->getById($id);
         return [
@@ -39,15 +39,15 @@ class ToDoService implements ToDoServiceInterface
         ];
     }
 
-    // public function update(int $id, array $data = []): array
-    // {
-    //     $todo = $this->toDoRepository->update($id, $data);
-    //     return [
-    //         'todo' => $todo,
-    //     ];
-    // }
+    public function update(string|int $id, $data = [])
+    {
+        $todo = $this->toDoRepository->update($id, $data);
+        return [
+            'todo' => $todo,
+        ];
+    }
 
-    public function destroy(int $id)
+    public function destroy(string|int $id)
     {
         return $this->toDoRepository->delete($id);
     }

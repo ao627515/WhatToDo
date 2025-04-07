@@ -23,17 +23,24 @@ class ToDoRepository implements ToDoRepositoryInterface
         return $this->model::create($attributes)->toArray();
     }
 
-    public function getById(int $id, array $column = ['*'])
+    public function getById(string|int $id, array $column = ['*'])
     {
         return $this->model::findOrFail($id, $column);
     }
 
 
 
-    public function delete(int $id)
+    public function delete(string|int $id)
     {
         $todo = $this->getById($id);
 
         return $todo->delete();
+    }
+
+    public function update(int|string $id, $attributes = [])
+    {
+        $todo = $this->getById($id);
+
+        return $todo->update($attributes);
     }
 }
