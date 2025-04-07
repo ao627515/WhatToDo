@@ -35,8 +35,16 @@
             </div>
         @else
             <ul class="tasks-list" id="tasksList">
+                @php
+                    $todosCompleted = $todos->where('completed', true);
+                    $todosNotCompleted = $todos->where('completed', false);
+                @endphp
                 <!-- Les tâches seront ajoutées ici dynamiquement -->
-                @foreach ($todos as $todo)
+                @foreach ($todosNotCompleted as $todo)
+                    <x-todo-item :todo="$todo" />
+                @endforeach
+                <hr>
+                @foreach ($todosCompleted as $todo)
                     <x-todo-item :todo="$todo" />
                 @endforeach
             </ul>
