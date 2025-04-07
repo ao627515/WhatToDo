@@ -56,9 +56,10 @@ class ToDoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ToDo $toDo)
+    public function destroy(ToDo $todo)
     {
-        $this->toDoService->destroy($toDo->id);
+        // dd($todo);
+        $this->toDoService->destroy($todo->id);
         return to_route('todos.index')->with('success', 'ToDo deleted successfully.');
     }
 }

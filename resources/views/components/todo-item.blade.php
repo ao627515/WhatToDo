@@ -7,6 +7,6 @@
     </div>
     <div class="task-actions">
         <button class="btn-icon edit-btn">✏️</button>
-        <button class="btn-icon delete-btn">🗑️</button>
+        <button class="btn-icon delete-btn" onclick="deleteTask({{ $todo->id }})">🗑️</button>
     </div>
 </li>

@@ -18,6 +18,7 @@
 
     <!-- Modal pour éditer/ajouter une tâche -->
     <div class="modal" id="taskModal">
+        @csrf
         <div class="modal-content">
             <h2 id="modalTitle">Modifier la tâche</h2>
             <form id="taskForm">
@@ -29,7 +30,6 @@
                 <div class="form-group">
                     <label for="taskStatus">Statut</label>
                     <select id="taskStatus">
-                        <option value="pending">En attente</option>
                         <option value="in-progress">En cours</option>
                         <option value="completed">Terminé</option>
                     </select>
@@ -41,6 +41,12 @@
             </form>
         </div>
     </div>
+
+    <form action="{{ route('todos.index') }}" method="post" delete id="deleteForm" style="display: none;">
+        @csrf
+        @method('DELETE')
+    </form>
+
 
     <script src="{{ asset('assets/js/app.js') }}"></script>
 </body>
