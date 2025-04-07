@@ -22,20 +22,13 @@ const toggleForm = document.getElementById('toggleForm');
 const modalFormActioninitValue = taskForm.action;
 
 // Gestionnaires d'événements
-searchBtn.addEventListener('click', filterTasks);
-searchInput.addEventListener('input', filterTasks);
-statusFilter.addEventListener('change', filterTasks);
-// addTaskBtn.addEventListener('click', addTask);
+// searchBtn.addEventListener('click', filterTasks);
+// searchInput.addEventListener('input', filterTasks);
+// statusFilter.addEventListener('change', filterTasks);
 emptyStateAddBtn?.addEventListener('click', openAddModal);
-// newTaskInput.addEventListener('keypress', e => {
-//     if (e.key === 'Enter') addTask();
-// });
+
 
 cancelBtn.addEventListener('click', closeModal);
-// taskForm.addEventListener('submit', saveTask);
-
-// Initialisation
-// renderTasks();
 
 // Fermer la modal si on clique à l'extérieur
 window.addEventListener('click', e => {
@@ -46,18 +39,11 @@ window.addEventListener('click', e => {
 // });
 
 // Filtrer les tâches
-function filterTasks() {
-    const searchTerm = searchInput.value.toLowerCase();
-    const statusValue = statusFilter.value;
+// function filterTasks() {
+//     const searchTerm = searchInput.value.toLowerCase();
+//     const statusValue = statusFilter.value;
 
-    // const filteredTasks = tasks.filter(task => {
-    //     const matchesSearch = task.title.toLowerCase().includes(searchTerm);
-    //     const matchesStatus = statusValue === 'all' || task.status === statusValue;
-    //     return matchesSearch && matchesStatus;
-    // });
-
-    // renderTasks(filteredTasks);
-}
+// }
 
 
 // Changer le statut d'une tâche (bascule terminé/non terminé)
@@ -87,16 +73,6 @@ function openEditModal(e) {
     const titleElement = target.querySelector('.task-text');
     taskTitle.value = titleElement ? titleElement.textContent : '';
 
-    // Vérifier le statut à l'aide de classList.contains (fonctionne en natif, contrairement à hasClass)
-    // const statusBadge = target.querySelector('.status-badge');
-    // taskStatus.value = statusBadge && statusBadge.classList.contains('status-completed')
-    //     ? 'completed'
-    //     : 'in-progress';
-
-
-    // Affichage des informations pour le debug (à retirer ou adapter en production)
-    // console.log({ taskId, title, status });
-    // console.log(taskId.value);
     taskForm.action = `${modalFormActioninitValue}/${taskId.value}`;
 
     const methodInput = document.createElement('input');
@@ -105,7 +81,6 @@ function openEditModal(e) {
     methodInput.value = 'PUT';
     taskForm.appendChild(methodInput);
 
-    // taskForm.submit();
     // Activer l'affichage du modal
     taskModal.classList.add('active');
 }
@@ -131,8 +106,6 @@ function closeModal() {
 // Supprimer une tâche
 function deleteTask(taskId) {
     if (confirm('Êtes-vous sûr de vouloir supprimer cette tâche?')) {
-        // tasks = tasks.filter(task => task.id !== taskId);
-        // renderTasks();
         deleteForm.action = `${deleteForm.action}/${taskId}`;
         deleteForm.submit();
     }

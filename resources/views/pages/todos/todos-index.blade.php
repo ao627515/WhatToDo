@@ -22,7 +22,7 @@
             </div>
         </form>
 
-        @if (empty($todos))
+        @if ($todos->isEmpty())
             <div class="empty-state" id="emptyState">
                 <img src="/api/placeholder/120/120" alt="Liste vide">
                 <h3>Aucune tâche pour le moment</h3>
