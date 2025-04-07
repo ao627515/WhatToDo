@@ -295,6 +295,11 @@ button {
     margin-bottom: 1.5rem;
 }
 
+#tasksList {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
 @media (max-width: 768px) {
     body {
         padding: 1rem;
