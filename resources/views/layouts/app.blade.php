@@ -26,6 +26,10 @@
                     <label for="taskTitle">Titre de la tâche</label>
                     <input type="text" id="taskTitle" name="title" required>
                 </div>
+                <div class="form-group">
+                    <label for="taskDescription">Description de la tâche</label>
+                    <textarea type="text" id="taskDescription" name="description"></textarea>
+                </div>
                 <div class="form-actions">
                     <button type="button" class="btn-secondary" id="cancelBtn">Annuler</button>
                     <button type="submit" class="btn-primary" id="saveBtn">Enregistrer</button>

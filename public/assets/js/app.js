@@ -8,6 +8,7 @@ const modalTitle = document.getElementById('modalTitle');
 const taskForm = document.getElementById('taskForm');
 const taskId = document.getElementById('taskId');
 const taskTitle = document.getElementById('taskTitle');
+const taskDescription = document.getElementById('taskDescription');
 const cancelBtn = document.getElementById('cancelBtn');
 const deleteForm = document.getElementById('deleteForm');
 const toggleForm = document.getElementById('toggleForm');
@@ -53,6 +54,8 @@ function openEditModal(e) {
     // Récupérer le titre de la tâche avec vérification si l'élément existe
     const titleElement = target.querySelector('.task-text');
     taskTitle.value = titleElement ? titleElement.textContent : '';
+
+    taskDescription.value = target.querySelector('.info-btn').title ?? '';
 
     taskForm.action = `${modalFormActioninitValue}/${taskId.value}`;
 

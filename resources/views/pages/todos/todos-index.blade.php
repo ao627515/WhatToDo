@@ -18,13 +18,15 @@
             </div>
         </form>
 
-        <form action="{{ route('todos.store') }}" method="post">
-            @csrf
-            <div class="add-task">
-                <input type="text" id="newTaskInput" placeholder="Ajouter une nouvelle tâche..." name="title" required>
-                <button class="btn-primary" id="addTaskBtn">Ajouter</button>
-            </div>
-        </form>
+        {{-- <form action="{{ route('todos.store') }}" method="post"> --}}
+        {{-- @csrf --}}
+        <div class="add-task">
+            {{-- <input type="text" id="newTaskInput" placeholder="Ajouter une nouvelle tâche..." name="title" required>
+                <textarea name="description" placeholder="Description" id=""></textarea> --}}
+            {{-- <button class="btn-primary" id="addTaskBtn">Ajouter</button> --}}
+            <button class="btn-primary" id="emptyStateAddBtn">Ajouter une tâche</button>
+        </div>
+        {{-- </form> --}}
 
         @if ($todos->isEmpty())
             <div class="empty-state" id="emptyState">

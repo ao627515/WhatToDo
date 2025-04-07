@@ -63,7 +63,8 @@ h1 {
 
 input,
 select,
-button {
+button,
+textarea {
     border: none;
     border-radius: 8px;
     padding: 0.75rem 1rem;
@@ -72,13 +73,15 @@ button {
 }
 
 input,
-select {
+select,
+textarea {
     background-color: rgba(255, 255, 255, 0.2);
     color: var(--white);
     flex-grow: 1;
 }
 
-input::placeholder {
+input::placeholder,
+textarea::placeholder {
     color: rgba(255, 255, 255, 0.6);
 }
 
@@ -120,6 +123,7 @@ button {
     display: flex;
     margin-bottom: 2rem;
     gap: 1rem;
+    justify-content: center;
 }
 
 .add-task input {
