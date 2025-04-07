@@ -1,30 +1,18 @@
-// document.addEventListener('DOMContentLoaded', () => {
-// Données de simulation pour le développement frontend
 
 // Éléments DOM
 const tasksList = document.getElementById('tasksList');
 const emptyState = document.getElementById('emptyState');
-const searchInput = document.getElementById('searchInput');
-const statusFilter = document.getElementById('statusFilter');
-const searchBtn = document.getElementById('searchBtn');
-const newTaskInput = document.getElementById('newTaskInput');
-// const addTaskBtn = document.getElementById('addTaskBtn');
 const emptyStateAddBtn = document.getElementById('emptyStateAddBtn');
 const taskModal = document.getElementById('taskModal');
 const modalTitle = document.getElementById('modalTitle');
 const taskForm = document.getElementById('taskForm');
 const taskId = document.getElementById('taskId');
 const taskTitle = document.getElementById('taskTitle');
-const taskStatus = document.getElementById('taskStatus');
 const cancelBtn = document.getElementById('cancelBtn');
 const deleteForm = document.getElementById('deleteForm');
 const toggleForm = document.getElementById('toggleForm');
 const modalFormActioninitValue = taskForm.action;
 
-// Gestionnaires d'événements
-// searchBtn.addEventListener('click', filterTasks);
-// searchInput.addEventListener('input', filterTasks);
-// statusFilter.addEventListener('change', filterTasks);
 emptyStateAddBtn?.addEventListener('click', openAddModal);
 
 
@@ -36,14 +24,7 @@ window.addEventListener('click', e => {
         closeModal();
     }
 });
-// });
 
-// Filtrer les tâches
-// function filterTasks() {
-//     const searchTerm = searchInput.value.toLowerCase();
-//     const statusValue = statusFilter.value;
-
-// }
 
 
 // Changer le statut d'une tâche (bascule terminé/non terminé)

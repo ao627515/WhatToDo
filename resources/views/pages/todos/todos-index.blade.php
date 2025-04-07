@@ -14,6 +14,7 @@
                     <option value="completed" @selected($status === 'completed')>Terminé</option>
                 </select>
                 <button class="btn-secondary" id="searchBtn">Rechercher</button>
+                <button type="reset" class="btn-secondary" id="resetBtn">Reenitialise</button>
             </div>
         </form>
 
