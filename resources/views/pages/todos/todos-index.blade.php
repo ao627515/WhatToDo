@@ -1,18 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- @dd($todos) --}}
     <div class="todo-card">
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Rechercher une tâche...">
-            <select id="statusFilter">
-                <option value="all">Tous les statuts</option>
-                <option value="pending">En attente</option>
-                <option value="in-progress">En cours</option>
-                <option value="completed">Terminé</option>
-            </select>
-            <button class="btn-secondary" id="searchBtn">Rechercher</button>
-        </div>
+
+        <form action="{{ route('todos.index') }}" method="get" id="searchForm">
+            @csrf
+            <div class="search-bar">
+                <input type="text" id="searchInput" name="query" value="{{ $query }}"
+                    placeholder="Rechercher une tâche...">
+                <select id="statusFilter" name="status">
+                    <option value="all" @selected($status === 'all')>Tous les statuts</option>
+                    <option value="in-progress" @selected($status === 'in-progress')>En cours</option>
+                    <option value="completed" @selected($status === 'completed')>Terminé</option>
+                </select>
+                <button class="btn-secondary" id="searchBtn">Rechercher</button>
+            </div>
+        </form>
 
         <form action="{{ route('todos.store') }}" method="post">
             @csrf

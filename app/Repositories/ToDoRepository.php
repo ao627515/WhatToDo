@@ -43,4 +43,9 @@ class ToDoRepository implements ToDoRepositoryInterface
 
         return $todo->update($attributes);
     }
+
+    public function query()
+    {
+        return  $this->model::query();
+    }
 }

@@ -6,6 +6,7 @@ use App\Http\Requests\StoreToDoRequest;
 use App\Http\Requests\UpdateToDoRequest;
 use App\Interfaces\Services\ToDoServiceInterface;
 use App\Models\ToDo;
+use Illuminate\Http\Request;
 
 class ToDoController extends Controller
 {
@@ -20,9 +21,17 @@ class ToDoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = $this->toDoService->index();
+        // dd($request->all());
+        $validatedData =  $request->validate([
+            'query' => 'nullable|string',
+            'status' => 'nullable|in:completed,in-progress,all'
+        ]);
+
+
+        $data = $this->toDoService->index($validatedData);
+
         return view('pages.todos.todos-index', $data);
     }
 

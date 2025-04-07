@@ -17,10 +17,22 @@ class ToDoService implements ToDoServiceInterface
 
     public function index(array $data = []): array
     {
-        $todos = $this->toDoRepository->getAll();
-        return [
-            'todos' => $todos,
-        ];
+        // Obtenir une instance de la requête sur les tâches via le repository
+        $query = $this->toDoRepository->query();
+
+        // Appliquer le filtre sur le titre si fourni
+        if (!empty($data['query'])) {
+            $query->where('title', 'like', '%' . $data['query'] . '%');
+        }
+
+        // Appliquer le filtre sur le statut si fourni
+        if (!empty($data['status']) && $data['status'] !== 'all') {
+            $isCompleted = $data['status'] === 'completed';
+            $query->where('completed', $isCompleted);
+        }
+
+        // Récupérer les tâches filtrées
+        return ['todos' => $query->get(), 'query' => $data['query'] ?? '', 'status' => $data['status'] ?? 'all'];
     }
 
     public function store(array $data = []): array
