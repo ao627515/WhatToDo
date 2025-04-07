@@ -39,7 +39,9 @@ class ToDoController extends Controller
      */
     public function store(StoreToDoRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+        $this->toDoService->store($validatedData);
+        return to_route('todos.index')->with('success', 'ToDo created successfully.');
     }
 
     /**

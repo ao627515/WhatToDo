@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    {{-- @dump($errors->all()) --}}
     <div class="todo-card">
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Rechercher une tâche...">
@@ -16,7 +17,7 @@
         <form action="{{ route('todos.store') }}" method="post">
             @csrf
             <div class="add-task">
-                <input type="text" id="newTaskInput" placeholder="Ajouter une nouvelle tâche...">
+                <input type="text" id="newTaskInput" placeholder="Ajouter une nouvelle tâche..." name="title" required>
                 <button class="btn-primary" id="addTaskBtn">Ajouter</button>
             </div>
         </form>

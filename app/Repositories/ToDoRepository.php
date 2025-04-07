@@ -17,4 +17,9 @@ class ToDoRepository implements ToDoRepositoryInterface
     {
         return $this->model::all($column)->toArray();
     }
+
+    public function create(array $attributes = []): array
+    {
+        return $this->model::create($attributes)->toArray();
+    }
 }

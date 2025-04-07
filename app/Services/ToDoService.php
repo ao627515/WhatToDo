@@ -3,9 +3,7 @@
 namespace App\Services;
 
 use App\Interfaces\Repositories\ToDoRepositoryInterface;
-use App\Interfaces\Services\Methods\IndexInterface;
 use App\Interfaces\Services\ToDoServiceInterface;
-use App\Repositories\ToDoRepository;
 
 class ToDoService implements ToDoServiceInterface
 {
@@ -21,6 +19,14 @@ class ToDoService implements ToDoServiceInterface
         $todos = $this->toDoRepository->getAll();
         return [
             'todos' => $todos,
+        ];
+    }
+
+    public function store(array $data = []): array
+    {
+        $todo = $this->toDoRepository->create($data);
+        return [
+            'todo' => $todo,
         ];
     }
 }
