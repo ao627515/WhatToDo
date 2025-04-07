@@ -16,9 +16,6 @@
         @yield('content')
     </div>
 
-    <!-- Modal pour éditer/ajouter une tâche -->
-    {{-- <form  id="editForm"> --}}
-    {{-- @method('PUT') --}}
     <div class="modal" id="taskModal">
         <div class="modal-content">
             <h2 id="modalTitle">Modifier la tâche</h2>
@@ -29,13 +26,6 @@
                     <label for="taskTitle">Titre de la tâche</label>
                     <input type="text" id="taskTitle" name="title" required>
                 </div>
-                {{-- <div class="form-group">
-                    <label for="taskStatus">Statut</label>
-                    <select id="taskStatus" name="status">
-                        <option value="in-progress">En cours</option>
-                        <option value="completed">Terminé</option>
-                    </select>
-                </div> --}}
                 <div class="form-actions">
                     <button type="button" class="btn-secondary" id="cancelBtn">Annuler</button>
                     <button type="submit" class="btn-primary" id="saveBtn">Enregistrer</button>
@@ -43,7 +33,6 @@
             </form>
         </div>
     </div>
-    {{-- </form> --}}
 
     <form action="{{ route('todos.index') }}" method="post" delete id="deleteForm" style="display: none;">
         @csrf
