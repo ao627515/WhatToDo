@@ -24,16 +24,14 @@ class RegisterUserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData =  $request->validate([
+            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required', 'confirmed'],
         ]);
 
         // Create the user
-        $user = User::create([
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $user = User::create($validatedData);
 
         // Log the user in
         Auth::login($user);

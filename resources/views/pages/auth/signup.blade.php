@@ -6,6 +6,13 @@
         <form action="{{ route('signup') }}" method="post">
             @csrf
             <div class="form-group">
+                <label for="name">Nom Complet</label>
+                <input type="name" id="name" name="name" required>
+                @error('name')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
                 @error('email')
