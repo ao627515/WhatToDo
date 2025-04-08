@@ -320,6 +320,13 @@ button {
     padding: 0 1rem;
 }
 
+.guest {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 @media (max-width: 768px) {
     body {
         padding: 1rem;

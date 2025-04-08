@@ -8,11 +8,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 </head>
 
-<body>
+<body class="guest">
     <div class="container">
-        <header>
-            <h1>Connecte toi et voit tes taches</h1>
-        </header>
         <div class="todo-card guest-card ">
             @yield('content')
         </div>

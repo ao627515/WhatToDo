@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterUserController extends Controller
 {
@@ -13,7 +16,7 @@ class RegisterUserController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.auth.signup');
     }
 
     /**
@@ -21,6 +24,20 @@ class RegisterUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => ['required', 'confirmed'],
+        ]);
+
+        // Create the user
+        $user = User::create([
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        // Log the user in
+        Auth::login($user);
+
+        return redirect()->route('todos.index');
     }
 }
