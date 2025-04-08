@@ -4,5 +4,5 @@ namespace App\Interfaces\Services\Methods;
 
 interface StoreInterface
 {
-    public function store(array $attributes = []): array;
+    public function store(array $attributes = []);
 }

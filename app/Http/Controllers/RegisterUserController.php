@@ -7,9 +7,17 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Interfaces\Services\UserServiceInterface;
 
 class RegisterUserController extends Controller
 {
+
+    protected UserServiceInterface $userService;
+
+    public function __construct(UserServiceInterface $userService)
+    {
+        $this->userService = $userService;
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -31,7 +39,7 @@ class RegisterUserController extends Controller
         ]);
 
         // Create the user
-        $user = User::create($validatedData);
+        $user = $this->userService->store($validatedData);
 
         // Log the user in
         Auth::login($user);
