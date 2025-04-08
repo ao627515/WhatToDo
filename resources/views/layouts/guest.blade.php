@@ -10,7 +10,14 @@
 
 <body>
     <div class="container">
-        @yield('content')
+        <header>
+            <h1>Connecte toi et voit tes taches</h1>
+        </header>
+        <div class="todo-card">
+
+            @yield('content')
+
+        </div>
     </div>
 </body>
 
