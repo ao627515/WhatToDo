@@ -5,9 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Interfaces\Services\AuthServiceInterface;
 
 class AuthController extends Controller
 {
+
+    protected AuthServiceInterface $authService;
+
+    public function __construct(AuthServiceInterface $authService)
+    {
+        $this->authService = $authService;
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -27,7 +35,7 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials, true)) {
+        if ($this->authService->signin($credentials)) {
             $request->session()->regenerate();
 
             return redirect()->intended(route('todos.index'));
@@ -40,7 +48,7 @@ class AuthController extends Controller
 
     public function signout(Request $request)
     {
-        Auth::logout();
+        $this->authService->signout();
 
         $request->session()->invalidate();
 
