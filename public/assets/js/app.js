@@ -13,11 +13,23 @@ const cancelBtn = document.getElementById('cancelBtn');
 const deleteForm = document.getElementById('deleteForm');
 const toggleForm = document.getElementById('toggleForm');
 const modalFormActioninitValue = taskForm.action;
+const signoutBtns = document.querySelectorAll('.signoutBtn');
+
+// console.log(signoutBtns);
+
 
 emptyStateAddBtn?.addEventListener('click', openAddModal);
 
 
 cancelBtn.addEventListener('click', closeModal);
+
+signoutBtns.forEach(btn => {
+    btn.addEventListener('click', e => {
+        e.preventDefault();
+        const route = btn.getAttribute('data-route');
+        signout(route);
+    });
+});
 
 // Fermer la modal si on clique à l'extérieur
 window.addEventListener('click', e => {
@@ -25,6 +37,20 @@ window.addEventListener('click', e => {
         closeModal();
     }
 });
+
+
+function signout(route) {
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = route;
+    form.innerHTML = `
+        <input type="hidden" name="_token" value="${document.querySelector('meta[name="csrf-token"]').content}">
+        `;
+    // <input type="hidden" name="_method" value="DELETE">
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
+}
 
 
 

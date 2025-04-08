@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Laravel Todo List</title>
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 </head>
@@ -12,6 +13,8 @@
     <div class="container">
         <header>
             <h1>Ma Todo List</h1>
+            <button type="button" data-route="{{ route('signout') }}"
+                class="btn-primary signoutBtn">Deconnexion</button>
         </header>
         @yield('content')
     </div>
