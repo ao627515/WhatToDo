@@ -7,7 +7,10 @@
             @csrf
             <div class="form-group">
                 <label for="name">Email</label>
-                <input type="text" id="email" name="email" required>
+                <input type="text" id="email" name="email" value="{{ old('email') }}" required>
+                @error('email')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="name">Mot de passe</label>
