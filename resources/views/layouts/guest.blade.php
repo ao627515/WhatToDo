@@ -13,10 +13,8 @@
         <header>
             <h1>Connecte toi et voit tes taches</h1>
         </header>
-        <div class="todo-card">
-
+        <div class="todo-card guest-card ">
             @yield('content')
-
         </div>
     </div>
 </body>

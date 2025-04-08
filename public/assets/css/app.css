@@ -304,6 +304,22 @@ button {
     overflow-y: auto;
 }
 
+.guest-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    max-width: 400px;
+}
+
+.login-card .form-actions {
+    flex-direction: column;
+    padding: 0 1rem;
+}
+
 @media (max-width: 768px) {
     body {
         padding: 1rem;
