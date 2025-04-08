@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="todo-card login-card">
+        <h1>Connexion</h1>
         <form action="{{ route('signin') }}" method="post">
             @csrf
             <div class="form-group">
