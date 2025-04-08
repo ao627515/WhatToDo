@@ -21,7 +21,18 @@ class AuthController extends Controller
      */
     public function signin(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ]);
+
+        if (auth()->attempt($validatedData)) {
+            return redirect()->intended('/')->with('success', 'Logged in successfully.');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
     }
 
     public function signout(Request $request)
