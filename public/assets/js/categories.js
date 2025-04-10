@@ -54,7 +54,7 @@ function signout(route) {
 
 
 
-// Changer le statut d'une tâche (bascule terminé/non terminé)
+// Changer le statut d'une categorie (bascule terminé/non terminé)
 function toggleTaskStatus(categoryId) {
     const action = toggleForm.action;
     toggleForm.action = action.replace(':id', categoryId);
@@ -65,23 +65,23 @@ function toggleTaskStatus(categoryId) {
 // Ouvrir la modal d'édition
 function openEditModal(e) {
     // Définir le libelle du modal
-    modalTitle.textContent = 'Modifier la tâche';
+    modalTitle.textContent = 'Modifier la categorie';
 
-    // Trouver l'élément parent correspondant à une tâche
+    // Trouver l'élément parent correspondant à une categorie
     const target = e.target.closest('.category-item');
     if (!target) {
         console.error("Aucun élément '.category-item' trouvé.");
         return;
     }
 
-    // Extraire l'id de la tâche via l'attribut data-id
+    // Extraire l'id de la categorie via l'attribut data-id
     categoryId.value = target.dataset.id;
 
-    // Récupérer le libelle de la tâche avec vérification si l'élément existe
+    // Récupérer le libelle de la categorie avec vérification si l'élément existe
     const labelElement = target.querySelector('.category-text');
-    categoryLabel.value = labelElement ? labelElement.textContent : '';
+    categoryLabel.value = labelElement ? labelElement.textContent.trim() : '';
 
-    categoryDescription.value = target.querySelector('.info-btn').label ?? '';
+    categoryDescription.value = target.querySelector('.info-btn').title ?? '';
 
     categoryForm.action = `${modalFormActioninitValue}/${categoryId.value}`;
 
@@ -98,7 +98,7 @@ function openEditModal(e) {
 
 // Ouvrir la modal d'ajout
 function openAddModal() {
-    modalTitle.textContent = 'Ajouter une tâche';
+    modalTitle.textContent = 'Ajouter une categorie';
     categoryForm.reset();
     categoryId.value = '';
 
@@ -113,9 +113,9 @@ function closeModal() {
 }
 
 
-// Supprimer une tâche
+// Supprimer une categorie
 function deleteTask(categoryId) {
-    if (confirm('Êtes-vous sûr de vouloir supprimer cette tâche?')) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer cette categorie?')) {
         deleteForm.action = `${deleteForm.action}/${categoryId}`;
         deleteForm.submit();
     }

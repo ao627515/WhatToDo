@@ -37,8 +37,8 @@
         @else
             <ul class="categories-list" id="categoriesList">
                 @foreach ($categories as $categorie)
-                    <li class="category-item-card">
-                        <div class="category-item">
+                    <li class="category-item" data-id="{{ $categorie->id }}">
+                        <div class="category-text">
                             {{ $categorie->label }}
                         </div>
                         <div class="item-actions">
