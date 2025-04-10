@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Interfaces\Repositories\ToDoRepositoryInterface;
-use App\Models\ToDo;
+use App\Models\Todo;
 
 class ToDoRepository implements ToDoRepositoryInterface
 {
@@ -11,7 +11,7 @@ class ToDoRepository implements ToDoRepositoryInterface
 
     public function __construct()
     {
-        $this->model = ToDo::class;
+        $this->model = Todo::class;
     }
     public function getAll(array $column = ['*'])
     {

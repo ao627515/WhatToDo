@@ -2,7 +2,7 @@
 
 namespace App\View\Components;
 
-use App\Models\ToDo;
+use App\Models\Todo;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -12,14 +12,14 @@ class TodoItem extends Component
     /**
      * @var ToDo
      */
-    public ToDo $todo;
+    public Todo $todo;
 
 
     /**
      * Create a new component instance.
      */
     public function __construct(
-        ToDo $todo
+        Todo $todo
     ) {
         $this->todo = $todo;
     }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreToDoRequest;
 use App\Http\Requests\UpdateToDoRequest;
 use App\Interfaces\Services\ToDoServiceInterface;
-use App\Models\ToDo;
+use App\Models\Todo;
 use Illuminate\Http\Request;
 
 class ToDoController extends Controller
@@ -49,7 +49,7 @@ class ToDoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ToDo $todo)
+    public function show(Todo $todo)
     {
         //
     }
@@ -67,7 +67,7 @@ class ToDoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ToDo $todo)
+    public function destroy(Todo $todo)
     {
         // dd($todo);
         $this->toDoService->destroy($todo->id);

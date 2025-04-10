@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Interfaces\Repositories\ToDoRepositoryInterface;
 use App\Interfaces\Services\ToDoServiceInterface;
-use App\Models\ToDo;
+use App\Models\Todo;
 
 class ToDoService implements ToDoServiceInterface
 {
