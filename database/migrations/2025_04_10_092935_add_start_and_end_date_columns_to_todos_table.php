@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('todso', function (Blueprint $table) {
+        Schema::table('todos', function (Blueprint $table) {
             $table->date('start_date')->default(now());
             $table->date('end_date')->default(now())->after('start_date');
         });
@@ -22,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('todo', function (Blueprint $table) {
+        Schema::table('todos', function (Blueprint $table) {
             $table->dropColumn('start_date');
             $table->dropColumn('end_date');
         });
