@@ -334,6 +334,46 @@ button {
     margin-top: 0.5rem;
 }
 
+.navbar {
+    padding: 1rem 2rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.navbar ul li {
+    list-style: none;
+}
+
+.navbar a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.navbar a:hover,
+.navbar li.active a {
+    background: linear-gradient(45deg, var(--red-crayola), var(--pumpkin));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.navbar li.active {
+    padding: 0.25rem 1rem 0.25rem 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 768px) {
     body {
         padding: 1rem;

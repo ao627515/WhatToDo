@@ -12,10 +12,29 @@
 <body>
     <div class="container">
         <header>
-            <h1>Ma Todo List</h1>
+            <h3>Ma Todo List</h3>
             <button type="button" data-route="{{ route('signout') }}"
                 class="btn-primary signoutBtn">Deconnexion</button>
         </header>
+        <nav class="header-nav navbar">
+            <ul>
+                <li class="active">
+                    <a href="{{ route('todos.index') }}">
+                        Tache
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        Categorie
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        Personne
+                    </a>
+                </li>
+            </ul>
+        </nav>
         @yield('content')
     </div>
 
