@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ToDoController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterUserController;
 
 
@@ -18,6 +19,6 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::redirect('/', '/todos');
     Route::patch('/todos/{todo}/toogle/completed', [ToDoController::class, 'toggleCompleted'])->name('todos.toggle.completed');
-    Route::resource('todos', ToDoController::class);
+    Route::resource('todos', ToDoController::class)->except(['show', 'edit', 'create']);
     Route::post('signout', [AuthController::class, 'signout'])->name('signout');
 });
