@@ -25,7 +25,7 @@
                 {{-- <button class="btn-primary" id="emptyStateAddBtn">Ajouter une categorie</button> --}}
             </div>
         @else
-            <ul class="categorys-list" id="categorysList">
+            <ul class="categories-list" id="categoriesList">
 
             </ul>
         @endif
@@ -38,8 +38,8 @@
                 @csrf
                 <input type="hidden" id="categoryId">
                 <div class="form-group">
-                    <label for="categoryTitle">Titre de la categorie</label>
-                    <input type="text" id="categoryTitle" name="title" required>
+                    <label for="categoryLabel">Libelle de la categorie</label>
+                    <input type="text" id="categoryLabel" name="label" required>
                 </div>
                 <div class="form-group">
                     <label for="categoryDescription">Description de la categorie</label>
