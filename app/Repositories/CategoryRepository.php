@@ -34,4 +34,10 @@ class CategoryRepository implements CategoryRepositoryInterface
         $category = $this->getById($id);
         return $category->update($attributes);
     }
+
+    public function delete(int|string $id)
+    {
+        $category = $this->getById($id);
+        return $category->delete();
+    }
 }

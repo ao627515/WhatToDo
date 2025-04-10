@@ -30,4 +30,9 @@ class CategorySerivce implements CategoryServiceInterface
     {
         return $this->categoryRepository->update($id, $attributes);
     }
+
+    public function delete(int|string $id)
+    {
+        return $this->categoryRepository->delete($id);
+    }
 }
