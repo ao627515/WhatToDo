@@ -21,7 +21,7 @@ class CategoryRepository implements CategoryRepositoryInterface
 
     public function getAll(array $column = ['*'])
     {
-        return $this->model::select($column)->get();
+        return $this->model::all();
     }
 
     public function getById(string|int $id, array $column = ['*'])

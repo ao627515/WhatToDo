@@ -22,7 +22,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('categories.index', ['categories' => $this->categoryService->index()]);
+        return view(
+            'pages.categories.categories-index',
+            ['categories' => $this->categoryService->index()]
+        );
     }
 
     /**
