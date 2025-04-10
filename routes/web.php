@@ -21,4 +21,5 @@ Route::middleware('auth')->group(function () {
     Route::patch('/todos/{todo}/toogle/completed', [ToDoController::class, 'toggleCompleted'])->name('todos.toggle.completed');
     Route::resource('todos', ToDoController::class)->except(['show', 'edit', 'create']);
     Route::post('signout', [AuthController::class, 'signout'])->name('signout');
+    Route::resource('categories', CategoryController::class);
 });
