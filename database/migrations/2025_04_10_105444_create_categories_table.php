@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->string('label')->unique();
+            // $table->string('label');
+            $table->string('description')->nullable();
+            // $table->foreignId('created_by')
+            //     ->constrained('users')
+            //     ->onUpdate('cascade')
+            //     ->onDelete('cascade');
             $table->timestamps();
         });
     }
