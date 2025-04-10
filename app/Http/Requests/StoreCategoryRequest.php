@@ -23,7 +23,7 @@ class StoreCategoryRequest extends FormRequest
     {
         return [
             'label' => ['required', 'string', 'max:20', 'unique:categories'],
-            'description' => ['required', 'string', 'max:100'],
+            'description' => ['nullable', 'string', 'max:100'],
         ];
     }
 }

@@ -41,9 +41,9 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        $category = $this->categoryService->store($request->validated());
+        $this->categoryService->store($request->validated());
 
-        return view('categories.index', compact('category'));
+        return redirect()->route('categories.index');
     }
 
     /**

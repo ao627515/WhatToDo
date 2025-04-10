@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+
+    @if ($errors->any())
+        <div class="card">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="card">
 
         {{-- <form action="{{ route('categories.index') }}" method="get" id="searchForm">
@@ -17,7 +27,7 @@
             <button class="btn-primary" id="emptyStateAddBtn">Ajouter une categorie</button>
         </div>
 
-        @if (true)
+        @if ($categories->isEmpty())
             <div class="empty-state" id="emptyState">
                 {{-- <img src="/api/placeholder/120/120" alt="Liste vide"> --}}
                 <h3>Aucune categorie pour le moment</h3>
@@ -26,7 +36,18 @@
             </div>
         @else
             <ul class="categories-list" id="categoriesList">
-
+                @foreach ($categories as $categorie)
+                    <li class="category-item-card">
+                        <div class="category-item">
+                            {{ $categorie->label }}
+                        </div>
+                        <div class="item-actions">
+                            <button class="btn-icon edit-btn" onclick="openEditModal(event)">✏️</button>
+                            <button class="btn-icon delete-btn" onclick="deleteTask({{ $categorie->id }})">🗑️</button>
+                            <button class="btn-icon info-btn" title="{{ $categorie->description }}">ℹ️</button>
+                        </div>
+                    </li>
+                @endforeach
             </ul>
         @endif
     </div>

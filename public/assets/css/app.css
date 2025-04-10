@@ -375,6 +375,36 @@ button {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+.categories-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.category-item-card {
+    padding: 0.25rem 1rem 0.25rem 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    display: flex;
+    min-width: 225px;
+    width: min-content;
+}
+
+.category-item {
+    /* padding: 0.25rem 1rem 0.25rem 1rem; */
+    background: linear-gradient(45deg, var(--red-crayola), var(--pumpkin));
+    padding: 0.5rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    min-width: 60px;
+    text-align: center;
+    /* margin-left: 1rem; */
+}
+
 @media (max-width: 768px) {
     body {
         padding: 1rem;
