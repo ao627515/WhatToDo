@@ -4,10 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\Interfaces\Services\CategoryServiceInterface;
 use App\Models\Category;
 
 class CategoryController extends Controller
 {
+
+    private CategoryServiceInterface $categoryService;
+
+    public function __construct(CategoryServiceInterface $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -29,7 +38,9 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $category = $this->categoryService->store($request->validated());
+
+        return view('categories.index', compact('category'));
     }
 
     /**
