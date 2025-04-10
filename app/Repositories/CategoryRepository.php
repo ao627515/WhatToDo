@@ -18,4 +18,9 @@ class CategoryRepository implements CategoryRepositoryInterface
     {
         return $this->model::create($attributes);
     }
+
+    public function getAll(array $column = ['*'])
+    {
+        return $this->model::select($column)->get();
+    }
 }

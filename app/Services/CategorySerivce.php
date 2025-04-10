@@ -20,4 +20,9 @@ class CategorySerivce implements CategoryServiceInterface
     {
         return $this->categoryRepository->create($attributes);
     }
+
+    public function index(array $data = [])
+    {
+        return $this->categoryRepository->getAll($data);
+    }
 }
