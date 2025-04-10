@@ -6,15 +6,20 @@ use App\Http\Requests\StoreToDoRequest;
 use App\Http\Requests\UpdateToDoRequest;
 use App\Interfaces\Services\ToDoServiceInterface;
 use App\Models\Todo;
+use App\Services\CategorySerivce;
 use Illuminate\Http\Request;
 
 class ToDoController extends Controller
 {
     private ToDoServiceInterface $toDoService;
+    private CategorySerivce $categoryService;
 
-    public function __construct(ToDoServiceInterface $toDoService)
-    {
+    public function __construct(
+        ToDoServiceInterface $toDoService,
+        CategorySerivce $categoryService
+    ) {
         $this->toDoService = $toDoService;
+        $this->categoryService = $categoryService;
     }
 
 
@@ -30,9 +35,14 @@ class ToDoController extends Controller
         ]);
 
 
-        $data = $this->toDoService->index($validatedData);
+        $todos = $this->toDoService->index($validatedData);
 
-        return view('pages.todos.todos-index', $data);
+        return view('pages.todos.todos-index', [
+            'todos' => $todos,
+            'query' => $validatedData['query'] ?? '',
+            'status' => $validatedData['status'] ?? 'all',
+            'categories' => $this->categoryService->index()
+        ]);
     }
 
 

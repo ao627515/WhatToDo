@@ -16,7 +16,7 @@ class ToDoService implements ToDoServiceInterface
         $this->toDoRepository = $toDoRepository;
     }
 
-    public function index(array $data = []): array
+    public function index(array $data = [])
     {
         // Obtenir une instance de la requête sur les tâches via le repository
         $query = $this->toDoRepository->query();
@@ -39,7 +39,7 @@ class ToDoService implements ToDoServiceInterface
 
 
         // Récupérer les tâches filtrées
-        return ['todos' => $query->get(), 'query' => $data['query'] ?? '', 'status' => $data['status'] ?? 'all'];
+        return $query->get();
     }
 
     public function store(array $data = []): array

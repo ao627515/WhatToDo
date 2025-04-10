@@ -62,6 +62,15 @@
                     <label for="taskDescription">Description de la tâche</label>
                     <textarea type="text" id="taskDescription" name="description"></textarea>
                 </div>
+                <div class="form-group">
+                    <label for="taskCategory">Categorie de la tache</label>
+                    <select id="taskCategory" name="category">
+                        <option value="" disabled selected>Choissiez une categorie</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->label }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="form-actions">
                     <button type="button" class="btn-secondary" id="cancelBtn">Annuler</button>
                     <button type="submit" class="btn-primary" id="saveBtn">Enregistrer</button>
