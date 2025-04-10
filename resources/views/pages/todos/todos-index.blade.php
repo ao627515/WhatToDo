@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="todo-card">
+    <div class="card">
 
         <form action="{{ route('todos.index') }}" method="get" id="searchForm">
             @csrf

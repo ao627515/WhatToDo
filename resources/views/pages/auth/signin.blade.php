@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 
 @section('content')
-    <div class="todo-card login-card">
+    <div class="card login-card">
         <h1>Connexion</h1>
         <form action="{{ route('signin') }}" method="post">
             @csrf

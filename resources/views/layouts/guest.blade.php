@@ -10,7 +10,7 @@
 
 <body class="guest">
     <div class="container">
-        <div class="todo-card guest-card ">
+        <div class="card guest-card ">
             @yield('content')
         </div>
     </div>

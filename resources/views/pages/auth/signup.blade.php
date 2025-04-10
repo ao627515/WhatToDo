@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Inscription</h1>
-    <div class="todo-card login-card">
+    <div class="card login-card">
         <form action="{{ route('signup') }}" method="post">
             @csrf
             <div class="form-group">
