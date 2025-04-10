@@ -25,4 +25,9 @@ class CategorySerivce implements CategoryServiceInterface
     {
         return $this->categoryRepository->getAll($data);
     }
+
+    public function update(int|string $id, $attributes = [])
+    {
+        return $this->categoryRepository->update($id, $attributes);
+    }
 }

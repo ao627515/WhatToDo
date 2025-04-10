@@ -23,4 +23,15 @@ class CategoryRepository implements CategoryRepositoryInterface
     {
         return $this->model::select($column)->get();
     }
+
+    public function getById(string|int $id, array $column = ['*'])
+    {
+        return $this->model::findOrFail($id, $column);
+    }
+
+    public function update(int|string $id, $attributes = [])
+    {
+        $category = $this->getById($id);
+        return $category->update($attributes);
+    }
 }
