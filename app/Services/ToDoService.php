@@ -2,9 +2,10 @@
 
 namespace App\Services;
 
-use App\Interfaces\Repositories\ToDoRepositoryInterface;
-use App\Interfaces\Services\ToDoServiceInterface;
 use App\Models\Todo;
+use Illuminate\Support\Facades\Auth;
+use App\Interfaces\Services\ToDoServiceInterface;
+use App\Interfaces\Repositories\ToDoRepositoryInterface;
 
 class ToDoService implements ToDoServiceInterface
 {
@@ -41,6 +42,7 @@ class ToDoService implements ToDoServiceInterface
 
     public function store(array $data = []): array
     {
+        $data['created_by'] = Auth::id();
         $todo = $this->toDoRepository->create($data);
         return [
             'todo' => $todo,
