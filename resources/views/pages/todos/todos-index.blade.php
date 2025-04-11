@@ -71,6 +71,22 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="taskStatus">Statut de la tâche</label>
+                    <select id="taskStatus" name="status">
+                        <option value="in-progress">En cours</option>
+                        <option value="completed">Terminé</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="taskStartDate">Date debut</label>
+                    <input type="date" id="taskStartDate" name="start_date">
+                </div>
+                <div class="form-group">
+                    <label for="taskEndDate">Date fin</label>
+                    <input type="date" id="taskEndDate" name="end_date">
+                </div>
                 <div class="form-actions">
                     <button type="button" class="btn-secondary" id="cancelBtn">Annuler</button>
                     <button type="submit" class="btn-primary" id="saveBtn">Enregistrer</button>
