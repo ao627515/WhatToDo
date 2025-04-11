@@ -5,6 +5,7 @@
         <span class="task-text {{ $todo->completed ? 'completed' : '' }}">{{ $todo->title }}</span>
         <span
             class="status-badge status-{{ $todo->completed ? 'completed' : 'in-progress' }}">{{ $todo->completed ? 'Terminer' : 'En cours' }}</span>
+        <span class="category-badge">{{ $todo->category->label ?? '' }}</span>
     </div>
     <div class="task-actions">
         <button class="btn-icon edit-btn" onclick="openEditModal(event)">✏️</button>

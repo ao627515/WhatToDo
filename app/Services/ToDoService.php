@@ -42,9 +42,10 @@ class ToDoService implements ToDoServiceInterface
         return $query->get();
     }
 
-    public function store(array $data = []): array
+    public function store(array $data = [])
     {
         $data['created_by'] = Auth::id();
+        $data['category_id'] = $data['category'];
         $todo = $this->toDoRepository->create($data);
         return [
             'todo' => $todo,

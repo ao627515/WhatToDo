@@ -393,7 +393,8 @@ button {
     /* width: min-content; */
 }
 
-.category-text {
+.category-text,
+.category-badge {
     /* padding: 0.25rem 1rem 0.25rem 1rem; */
     background: linear-gradient(45deg, var(--red-crayola), var(--pumpkin));
     padding: 0.5rem 0.75rem;

@@ -23,3 +23,5 @@ Route::middleware('auth')->group(function () {
     Route::post('signout', [AuthController::class, 'signout'])->name('signout');
     Route::resource('categories', CategoryController::class)->except(['show', 'create', 'edit']);
 });
+
+Route::middleware('auth')->group(function () {});
