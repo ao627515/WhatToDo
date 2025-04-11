@@ -25,6 +25,7 @@ class UpdateToDoRequest extends FormRequest
 
             'title' => 'required|string|max:255',
             'description' => 'nullable|string|max:255',
+            'category' => 'required|exists:categories,id'
         ];
     }
 }

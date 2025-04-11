@@ -12,6 +12,7 @@ const taskDescription = document.getElementById('taskDescription');
 const cancelBtn = document.getElementById('cancelBtn');
 const deleteForm = document.getElementById('deleteForm');
 const toggleForm = document.getElementById('toggleForm');
+const taskCategory = document.getElementById('taskCategory');
 const modalFormActioninitValue = taskForm.action;
 const signoutBtns = document.querySelectorAll('.signoutBtn');
 
@@ -84,6 +85,8 @@ function openEditModal(e) {
     taskDescription.value = target.querySelector('.info-btn').title ?? '';
 
     taskForm.action = `${modalFormActioninitValue}/${taskId.value}`;
+
+    taskCategory.value = target.dataset.category;
 
     const methodInput = document.createElement('input');
     methodInput.type = 'hidden';

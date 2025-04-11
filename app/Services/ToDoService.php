@@ -62,6 +62,7 @@ class ToDoService implements ToDoServiceInterface
 
     public function update(string|int $id, $data = [])
     {
+        $data['category_id'] = $data['category'];
         $todo = $this->toDoRepository->update($id, $data);
         return [
             'todo' => $todo,
