@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enum\TodoStatusEnum;
 use App\Models\Todo;
 use Illuminate\Support\Facades\Auth;
 use App\Interfaces\Services\ToDoServiceInterface;
@@ -63,6 +64,7 @@ class ToDoService implements ToDoServiceInterface
     public function update(string|int $id, $data = [])
     {
         $data['category_id'] = $data['category'];
+        $data['completed'] = $data['status'] === TodoStatusEnum::COMPLETED->value;
         $todo = $this->toDoRepository->update($id, $data);
         return [
             'todo' => $todo,

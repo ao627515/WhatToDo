@@ -1,4 +1,5 @@
-<li class="task-item" data-id="{{ $todo->id }}" data-category="{{ $todo->category->id }}">
+<li class="task-item" data-id="{{ $todo->id }}" data-category="{{ $todo->category->id }}"
+    data-status="{{ $todo->strStatus }}">
     <div class="task-content">
         <div class="task-checkbox {{ $todo->completed ? 'completed' : '' }}"
             onclick="toggleTaskStatus({{ $todo->id }})"></div>

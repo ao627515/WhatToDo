@@ -74,6 +74,7 @@
                 <div class="form-group">
                     <label for="taskStatus">Statut de la tâche</label>
                     <select id="taskStatus" name="status">
+                        <option value="" disabled selected>Choissiez un statut</option>
                         <option value="in-progress">En cours</option>
                         <option value="completed">Terminé</option>
                     </select>
