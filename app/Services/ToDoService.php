@@ -2,9 +2,10 @@
 
 namespace App\Services;
 
-use App\Enum\TodoStatusEnum;
 use App\Models\Todo;
+use App\Enum\TodoStatusEnum;
 use Illuminate\Support\Facades\Auth;
+use App\Factories\Todo\ToDoFilterFactory;
 use App\Interfaces\Services\ToDoServiceInterface;
 use App\Interfaces\Repositories\ToDoRepositoryInterface;
 
@@ -22,15 +23,19 @@ class ToDoService implements ToDoServiceInterface
         // Obtenir une instance de la requête sur les tâches via le repository
         $query = $this->toDoRepository->query();
 
-        // Appliquer le filtre sur le titre si fourni
-        if (!empty($data['query'])) {
-            $query->where('title', 'like', '%' . $data['query'] . '%');
-        }
+        // // Appliquer le filtre sur le titre si fourni
+        // if (!empty($data['query'])) {
+        //     $query->where('title', 'like', '%' . $data['query'] . '%');
+        // }
 
-        // Appliquer le filtre sur le statut si fourni
-        if (!empty($data['status']) && $data['status'] !== 'all') {
-            $isCompleted = $data['status'] === 'completed';
-            $query->where('completed', $isCompleted);
+        // // Appliquer le filtre sur le statut si fourni
+        // if (!empty($data['status']) && $data['status'] !== 'all') {
+        //     $isCompleted = $data['status'] === 'completed';
+        //     $query->where('completed', $isCompleted);
+        // }
+
+        foreach (ToDoFilterFactory::build($data) as $filter) {
+            $query = $filter->apply($query);
         }
 
         // Appliquer le tri par défaut
