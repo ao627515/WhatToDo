@@ -19,7 +19,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::redirect('/', '/todos');
     Route::patch('/todos/{todo}/toogle/completed', [ToDoController::class, 'toggleCompleted'])->name('todos.toggle.completed');
-    Route::resource('todos', ToDoController::class)->except(['show', 'edit', 'create']);
+    Route::resource('todos', ToDoController::class)->except(['show']);
     Route::post('signout', [AuthController::class, 'signout'])->name('signout');
     Route::resource('categories', CategoryController::class)->except(['show', 'create', 'edit']);
 });

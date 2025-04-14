@@ -19,17 +19,17 @@
         </header>
         <nav class="header-nav navbar">
             <ul>
-                <li class="active">
+                <li @class(['active' => request()->routeIs('todos.*')])>
                     <a href="{{ route('todos.index') }}">
                         Tache
                     </a>
                 </li>
-                <li>
+                <li @class(['active' => request()->routeIs('categories.*')])>
                     <a href="{{ route('categories.index') }}">
                         Categories
                     </a>
                 </li>
-                <li>
+                <li @class(['active' => request()->routeIs('users.*')])>
                     <a href="">
                         Personnes
                     </a>

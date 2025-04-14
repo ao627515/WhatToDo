@@ -55,10 +55,7 @@ class ToDoService implements ToDoServiceInterface
 
     public function show(string|int $id, array $data = [])
     {
-        $todo = $this->toDoRepository->getById($id);
-        return [
-            'todo' => $todo,
-        ];
+        return $this->toDoRepository->getById($id);
     }
 
     public function update(string|int $id, $data = [])

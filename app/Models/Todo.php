@@ -17,6 +17,18 @@ class Todo extends Model
         'category_id'
     ];
 
+    public function casts(): array
+    {
+        return [
+            'completed' => 'boolean',
+            'end_date' => 'date',
+            'start_date' => 'date',
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+
+        ];
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'created_by');
@@ -27,7 +39,7 @@ class Todo extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function strStatus(): Attribute
+    public function status(): Attribute
     {
         return Attribute::make(
             get: fn($value, $attributes) => $attributes['completed'] ? 'completed' : 'in-progress'

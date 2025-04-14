@@ -45,6 +45,23 @@ class ToDoController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        return view('pages.todos.todos-create', [
+            'categories' => $this->categoryService->index(),
+        ]);
+    }
+
+
+    public function edit(int $todo)
+    {
+        $todo = $this->toDoService->show($todo);
+        return view('pages.todos.todos-edit', [
+            'todo' => $todo,
+            'categories' => $this->categoryService->index(),
+        ]);
+    }
+
 
     /**
      * Store a newly created resource in storage.

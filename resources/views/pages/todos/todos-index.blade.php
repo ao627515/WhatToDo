@@ -20,7 +20,9 @@
 
 
         <div class="add-task">
-            <button class="btn-primary" id="emptyStateAddBtn">Ajouter une tâche</button>
+            <a href="{{ route('todos.create') }}">
+                <button class="btn-primary" id="emptyStateAddBtn">Ajouter une tâche</button>
+            </a>
         </div>
 
         @if ($todos->isEmpty())
@@ -48,7 +50,7 @@
         @endif
     </div>
 
-    <div class="modal" id="taskModal">
+    {{-- <div class="modal" id="taskModal">
         <div class="modal-content">
             <h2 id="modalTitle">Modifier la tâche</h2>
             <form id="taskForm" action="{{ route('todos.index') }}" method="post">
@@ -94,7 +96,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> --}}
 
     <form action="{{ route('todos.index') }}" method="post" delete id="deleteForm" style="display: none;">
         @csrf
