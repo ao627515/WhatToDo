@@ -5,11 +5,13 @@ namespace App\Interfaces\Repositories;
 use App\Interfaces\Repositories\Methods\CreateInterface;
 use App\Interfaces\Repositories\Methods\DeleteInterface;
 use App\Interfaces\Repositories\Methods\GetAllInterface;
-use App\Interfaces\Repositories\Methods\GetByIdInterface;
 use App\Interfaces\Repositories\Methods\UpdateInterface;
+use App\Interfaces\Repositories\Methods\GetByIdInterface;
+use App\Interfaces\Repositories\Methods\findOrCreateInterface;
 
 interface CategoryRepositoryInterface extends CreateInterface,
     GetAllInterface,
     UpdateInterface,
     GetByIdInterface,
-    DeleteInterface {}
+    DeleteInterface,
+    findOrCreateInterface {}

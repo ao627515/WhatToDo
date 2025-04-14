@@ -40,4 +40,9 @@ class CategoryRepository implements CategoryRepositoryInterface
         $category = $this->getById($id);
         return $category->delete();
     }
+
+    public function findOrCreate(array $attributes = [], array $values = [])
+    {
+        return $this->model::firstOrCreate($attributes, $values);
+    }
 }
