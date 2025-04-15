@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ToDoController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PersonController;
 use App\Http\Controllers\RegisterUserController;
 
 
@@ -25,4 +26,6 @@ Route::middleware('auth')->group(function () {
     Route::post('signout', [AuthController::class, 'signout'])->name('signout');
 
     Route::resource('categories', CategoryController::class)->except(['show', 'create', 'edit']);
+
+    Route::resource('people', PersonController::class);
 });
