@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\GenderEnum;
 use App\Http\Requests\StorePersonRequest;
 use App\Http\Requests\UpdatePersonRequest;
 use App\Interfaces\Services\PersonServiceInterface;
@@ -24,12 +25,12 @@ class PersonController extends Controller
     {
         //     dd('index');
 
-            $people = $this->personService->index();
+        $people = $this->personService->index();
 
-            return view(
-                'pages.people.people-index',
-                compact('people')
-            );
+        return view(
+            'pages.people.people-index',
+            compact('people')
+        );
     }
 
     /**
@@ -37,7 +38,13 @@ class PersonController extends Controller
      */
     public function create()
     {
-        //
+        $genders = GenderEnum::getLabelsWithValues();
+        return view(
+            'pages.people.people-create',
+            compact(
+                'genders'
+            )
+        );
     }
 
     /**

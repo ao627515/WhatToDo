@@ -7,7 +7,10 @@
         <form id="personForm" action="{{ route('people.store') }}" method="post">
             @csrf
 
-            @include('pages.people.includes.people-form', ['person' => null])
+            @include('pages.people.includes.people-form', [
+                'person' => null,
+                'genders' => $genders,
+            ])
         </form>
     </div>
 @endsection
