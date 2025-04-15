@@ -4,16 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePersonRequest;
 use App\Http\Requests\UpdatePersonRequest;
+use App\Interfaces\Services\PersonServiceInterface;
 use App\Models\Person;
 
 class PersonController extends Controller
 {
+
+    private PersonServiceInterface $personService;
+
+    public function __construct(PersonServiceInterface $personService)
+    {
+        $this->personService = $personService;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $people = $this->personService->index();
+
+        return view(
+            'pages.people.people-index',
+            compact('people')
+        );
     }
 
     /**
