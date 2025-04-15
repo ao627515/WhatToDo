@@ -5,8 +5,9 @@ namespace App\Factories\Todo;
 // use App\Filters\Todo\TodoFilterInterface;
 use App\Filters\Todo\TitleFilter;
 use App\Filters\Todo\StatusFilter;
-use App\Interfaces\Factories\FilterFactoryInterface;
+use App\Filters\Todo\CategoryFilter;
 use App\Interfaces\Filters\FilterInterface;
+use App\Interfaces\Factories\FilterFactoryInterface;
 
 class ToDoFilterFactory implements FilterFactoryInterface
 {
@@ -23,6 +24,10 @@ class ToDoFilterFactory implements FilterFactoryInterface
 
         if (!empty($data['status'])) {
             $filters[] = new StatusFilter($data['status']);
+        }
+
+        if (!empty($data['category'])) {
+            $filters[] = new CategoryFilter($data['category']);
         }
 
         return $filters;

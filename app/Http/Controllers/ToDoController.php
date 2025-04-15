@@ -31,16 +31,22 @@ class ToDoController extends Controller
         // dd($request->all());
         $validatedData =  $request->validate([
             'query' => 'nullable|string',
-            'status' => 'nullable|in:completed,in-progress,all'
+            'status' => 'nullable|in:completed,in-progress,all',
+            'category' => 'nullable|integer|exists:categories,id',
         ]);
 
 
         $todos = $this->toDoService->index($validatedData);
 
-        return view('pages.todos.todos-index', [
-            'todos' => $todos,
+        $todosFiltersQuery = [
             'query' => $validatedData['query'] ?? '',
             'status' => $validatedData['status'] ?? 'all',
+            'category' => $validatedData['category'] ?? null,
+        ];
+
+        return view('pages.todos.todos-index', [
+            'todos' => $todos,
+            'todosFiltersQuery' => $todosFiltersQuery,
             'categories' => $this->categoryService->index()
         ]);
     }

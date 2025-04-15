@@ -54,13 +54,6 @@ h1 {
     margin-bottom: 2rem;
 }
 
-.search-bar {
-    display: flex;
-    margin-bottom: 1.5rem;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
 input,
 select,
 button,
@@ -406,12 +399,27 @@ button {
     /* margin-left: 1rem; */
 }
 
+.task-filter {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Trois colonnes : 1/4, 2/4, 1/4 */
+    grid-template-rows: auto auto auto; /* Deux lignes de hauteur automatique */
+    gap: 10px;
+}
+
+.task-filter .col-1 {
+    grid-column: 1 / span 2; /* Première colonne */
+}
+
+.task-filter .col {
+    display: flex;
+    justify-content: center;
+}
+
 @media (max-width: 768px) {
     body {
         padding: 1rem;
     }
 
-    .search-bar,
     .add-task {
         flex-direction: column;
     }

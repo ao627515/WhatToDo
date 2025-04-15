@@ -5,16 +5,40 @@
 
         <form action="{{ route('todos.index') }}" method="get" id="searchForm">
             @csrf
-            <div class="search-bar">
-                <input type="text" id="searchInput" name="query" value="{{ $query }}"
-                    placeholder="Rechercher une tâche...">
-                <select id="statusFilter" name="status">
-                    <option value="all" @selected($status === 'all')>Tous les statuts</option>
-                    <option value="in-progress" @selected($status === 'in-progress')>En cours</option>
-                    <option value="completed" @selected($status === 'completed')>Terminé</option>
-                </select>
-                <button class="btn-secondary" id="searchBtn">Rechercher</button>
-                <button type="reset" form="searchForm" class="btn-secondary" id="resetBtn">Reenitialise</button>
+            <div class="task-filter">
+                <div class="col col-1">
+                    <input type="text" id="searchInput" name="query" value="{{ $todosFiltersQuery['query'] }}"
+                        placeholder="Rechercher une tâche...">
+                </div>
+                <div class="col">
+                    <select id="statusFilter" name="status">
+
+                        <option value="all" @selected($todosFiltersQuery['status'] === 'all')>Tous les statuts</option>
+                        <option value="in-progress" @selected($todosFiltersQuery['status'] === 'in-progress')>En cours</option>
+                        <option value="completed" @selected($todosFiltersQuery['status'] === 'completed')>Terminé</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <select id="taskCategory" name="category">
+                        <option value="" disabled
+                            {{ old('category', $todosFiltersQuery['category'] ?? '') ? '' : 'selected' }}>
+                            Choisissez une catégorie
+                        </option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}"
+                                {{ old('category', $todosFiltersQuery['category'] ?? '') == $category->id ? 'selected' : '' }}>
+                                {{ $category->label }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col">
+                    <button class="btn-secondary" id="searchBtn">Rechercher</button>
+                </div>
+                <div class="col">
+                    <button type="submit" form="searchForm" formaction="{{ route('todos.filter.form.reset') }}"
+                        class="btn-secondary" id="resetBtn">Reenitialise</button>
+                </div>
             </div>
         </form>
 
