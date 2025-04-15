@@ -36,8 +36,8 @@
                     <button class="btn-secondary" id="searchBtn">Rechercher</button>
                 </div>
                 <div class="col">
-                    <button type="submit" form="searchForm" formaction="{{ route('todos.filter.form.reset') }}"
-                        class="btn-secondary" id="resetBtn">Reenitialise</button>
+                    <button type="submit" form="searchForm" formaction="{{ route('todos.reset') }}" class="btn-secondary"
+                        id="resetBtn">Reenitialise</button>
                 </div>
             </div>
         </form>
