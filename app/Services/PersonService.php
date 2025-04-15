@@ -2,14 +2,15 @@
 
 namespace App\Services;
 
+use App\Interfaces\Repositories\PersonRepositoryInterface;
 use App\Interfaces\Services\PersonServiceInterface;
 
 class PersonService implements PersonServiceInterface
 {
 
-    private PersonServiceInterface $peopleRepository;
+    private PersonRepositoryInterface $peopleRepository;
 
-    public function __construct(PersonServiceInterface $peopleRepository)
+    public function __construct(PersonRepositoryInterface $peopleRepository)
     {
         $this->peopleRepository = $peopleRepository;
     }

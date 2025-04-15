@@ -22,12 +22,14 @@ class PersonController extends Controller
      */
     public function index()
     {
-        $people = $this->personService->index();
+        //     dd('index');
 
-        return view(
-            'pages.people.people-index',
-            compact('people')
-        );
+            $people = $this->personService->index();
+
+            return view(
+                'pages.people.people-index',
+                compact('people')
+            );
     }
 
     /**
