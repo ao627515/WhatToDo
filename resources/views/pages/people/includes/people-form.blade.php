@@ -55,3 +55,8 @@
         <p class="error-message">{{ $message }}</p>
     @enderror
 </div>
+
+<div class="form-actions">
+    <button type="button" class="btn-secondary" id="cancelBtn">Annuler</button>
+    <button type="submit" class="btn-primary" id="saveBtn">Enregistrer</button>
+</div>

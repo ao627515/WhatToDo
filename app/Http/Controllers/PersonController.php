@@ -52,7 +52,10 @@ class PersonController extends Controller
      */
     public function store(StorePersonRequest $request)
     {
-        //
+        $data =   $request->validated();
+        $this->personService->store($data);
+
+        return redirect()->route('people.index');
     }
 
     /**

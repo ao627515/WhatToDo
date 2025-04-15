@@ -11,4 +11,9 @@ class PersonRepository implements PersonRepositoryInterface
     {
         return Person::query();
     }
+
+    public function create(array $attributes = [])
+    {
+        return Person::create($attributes);
+    }
 }

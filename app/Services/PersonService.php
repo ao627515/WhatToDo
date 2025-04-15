@@ -24,4 +24,9 @@ class PersonService implements PersonServiceInterface
 
         return $query->get();
     }
+
+    public function store(array $attributes = [])
+    {
+        return $this->peopleRepository->create($attributes);
+    }
 }
