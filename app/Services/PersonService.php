@@ -18,6 +18,10 @@ class PersonService implements PersonServiceInterface
 
     public function index(array $data = [])
     {
-        return;
+        $query = $this->peopleRepository->query();
+
+        $query->orderBy('created_at', 'desc');
+
+        return $query->get();
     }
 }

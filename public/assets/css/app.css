@@ -114,7 +114,8 @@ button {
 }
 
 .add-task,
-.add-category {
+.add-category,
+.add-person {
     display: flex;
     margin-bottom: 2rem;
     gap: 1rem;

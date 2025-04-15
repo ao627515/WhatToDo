@@ -2,4 +2,6 @@
 
 namespace App\Interfaces\Repositories;
 
-interface PersonRepositoryInterface {}
+use App\Interfaces\Repositories\Methods\QueryInterface;
+
+interface PersonRepositoryInterface extends QueryInterface {}
