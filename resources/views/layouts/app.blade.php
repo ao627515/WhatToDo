@@ -29,8 +29,8 @@
                         Categories
                     </a>
                 </li>
-                <li @class(['active' => request()->routeIs('users.*')])>
-                    <a href="">
+                <li @class(['active' => request()->routeIs('people.*')])>
+                    <a href="{{ route('people.index') }}">
                         Personnes
                     </a>
                 </li>
