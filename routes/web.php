@@ -27,5 +27,5 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('categories', CategoryController::class)->except(['show', 'create', 'edit']);
 
-    Route::reesource('people', PersonController::class);
+    Route::resource('people', PersonController::class);
 });
