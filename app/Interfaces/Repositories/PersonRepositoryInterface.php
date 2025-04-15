@@ -2,6 +2,4 @@
 
 namespace App\Interfaces\Repositories;
 
-interface PeopleRepositoryInterface
-{
-}
+interface PersonRepositoryInterface {}
