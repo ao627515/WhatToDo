@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enum\GenderEnum;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdatePersonRequest extends FormRequest
 {
@@ -11,7 +13,7 @@ class UpdatePersonRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +24,12 @@ class UpdatePersonRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'lastname' => ['nullable', 'string', 'max:255'],
+            'firstname' => ['nullable', 'string', 'max:255'],
+            'email' => ['nullable', 'email', 'max:255', Rule::unique('people')->ignore($this->route('person'))],
+            'gender' => ['nullable', 'string', 'max:1', 'in:' . implode(',', GenderEnum::getValues())],
+            'birthdate' => ['nullable', 'date'],
+            'birthplace' => ['nullable', 'string', 'max:255'],
         ];
     }
 }

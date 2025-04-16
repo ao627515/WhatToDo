@@ -41,7 +41,8 @@
 
 <div class="form-group">
     <label for="birthdate">Date de naissance</label>
-    <input type="date" name="birthdate" id="birthdate" value="{{ old('birthdate', $person?->birthdate ?? '') }}">
+    <input type="date" name="birthdate" id="birthdate"
+        value="{{ old('birthdate', $person?->birthdate->format('Y-m-d') ?? '') }}">
     @error('birthdate')
         <p class="error-message">{{ $message }}</p>
     @enderror

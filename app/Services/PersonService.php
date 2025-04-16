@@ -29,4 +29,24 @@ class PersonService implements PersonServiceInterface
     {
         return $this->peopleRepository->create($attributes);
     }
+
+    public  function update(int|string $id, $data = [])
+    {
+        $person = $this->peopleRepository->getById($id);
+
+        $person->update($data);
+
+        return $person;
+    }
+
+    public function destroy(int|string $id)
+    {
+        $person = $this->peopleRepository->getById($id);
+
+        if ($person) {
+            return $this->peopleRepository->delete($id);
+        }
+
+        return false;
+    }
 }

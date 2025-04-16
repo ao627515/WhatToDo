@@ -16,4 +16,20 @@ class PersonRepository implements PersonRepositoryInterface
     {
         return Person::create($attributes);
     }
+
+    public function getById(int|string $id, array $column = ['*'])
+    {
+        return Person::find($id, $column);
+    }
+
+    public function delete(int|string $id)
+    {
+        $person = $this->getById($id);
+
+        if ($person) {
+            return $person->delete();
+        }
+
+        return false;
+    }
 }

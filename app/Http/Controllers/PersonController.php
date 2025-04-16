@@ -71,15 +71,23 @@ class PersonController extends Controller
      */
     public function edit(Person $person)
     {
-        //
+        $genders = GenderEnum::getLabelsWithValues();
+
+        return view(
+            'pages.people.people-edit',
+            compact('genders', 'person')
+        );
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePersonRequest $request, Person $person)
+    public function update(UpdatePersonRequest $request, int $person)
     {
-        //
+        $data =   $request->validated();
+        $this->personService->update($person, $data);
+
+        return redirect()->route('people.index');
     }
 
     /**
@@ -87,6 +95,8 @@ class PersonController extends Controller
      */
     public function destroy(Person $person)
     {
-        //
+        $this->personService->destroy($person->id);
+
+        return redirect()->route('people.index');
     }
 }

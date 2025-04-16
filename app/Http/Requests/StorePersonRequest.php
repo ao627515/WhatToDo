@@ -25,7 +25,7 @@ class StorePersonRequest extends FormRequest
         return [
             'lastname' => ['required', 'string', 'max:255'],
             'firstname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255'],
+            'email' => ['required', 'email', 'max:255', 'unique:people'],
             'gender' => ['required', 'string', 'max:1', 'in:' . implode(',', GenderEnum::getValues())],
             'birthdate' => ['required', 'date'],
             'birthplace' => ['required', 'string', 'max:255'],

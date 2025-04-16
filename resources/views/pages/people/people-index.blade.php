@@ -35,12 +35,12 @@
                             <td>{{ $person->gender }}</td>
                             <td>
                                 <a href="{{ route('people.edit', $person->id) }}">
-                                    <button class="btn-primary">Modifier</button>
+                                    <button class="btn-edit">Modifier</button>
                                 </a>
                                 <form action="{{ route('people.destroy', $person->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn-danger" type="submit">Supprimer</button>
+                                    <button class="btn-delete" type="submit">Supprimer</button>
                                 </form>
                             </td>
 
