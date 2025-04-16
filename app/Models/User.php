@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Todo;
+use App\Models\Person;
+use App\Models\TodoAssigned;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -50,5 +52,13 @@ class User extends Authenticatable
     public function todos()
     {
         return $this->hasMany(Todo::class, 'created_by');
+    }
+
+    /**
+     * Relation avec les assignations créées par cet utilisateur
+     */
+    public function assignedTodos()
+    {
+        return $this->hasMany(TodoAssigned::class, 'assigned_by_id');
     }
 }
