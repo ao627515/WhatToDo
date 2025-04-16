@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enum\GenderEnum;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Person extends Model
 {
@@ -21,5 +22,12 @@ class Person extends Model
             'updated_at' => 'datetime',
             'gender' => GenderEnum::class
         ];
+    }
+
+    public function name(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value, $attributes) => $attributes['firstname'] . ' ' . $attributes['lastname'],
+        );
     }
 }

@@ -16,11 +16,46 @@
                 {{-- <button class="btn-primary" id="emptyStateAddBtn">Ajouter une personne</button> --}}
             </div>
         @else
-            <ul class="people-list" id="peopleList">
-                @foreach ($people as $person)
-                    <p>yo</p>
-                @endforeach
-            </ul>
+            <table>
+                <thead>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Date Nais.</th>
+                    <th>Lieu Nais.</th>
+                    <th>Genre</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody>
+                    @foreach ($people as $person)
+                        <tr>
+                            <td>{{ $person->name }}</td>
+                            <td>{{ $person->email }}</td>
+                            <td>{{ $person->birthdate->format('d-m-Y') }}</td>
+                            <td>{{ $person->birthplace }}</td>
+                            <td>{{ $person->gender }}</td>
+                            <td>
+                                <a href="{{ route('people.edit', $person->id) }}">
+                                    <button class="btn-primary">Modifier</button>
+                                </a>
+                                <form action="{{ route('people.destroy', $person->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn-danger" type="submit">Supprimer</button>
+                                </form>
+                            </td>
+
+                        </tr>
+                    @endforeach
+                </tbody>
+                <tfoot>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Date Nais.</th>
+                    <th>Lieu Nais.</th>
+                    <th>Genre</th>
+                    <th>Actions</th>
+                </tfoot>
+            </table>
         @endif
     </div>
 @endsection
