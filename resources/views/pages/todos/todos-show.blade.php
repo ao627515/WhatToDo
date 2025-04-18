@@ -44,5 +44,24 @@
                 </form>
             </div>
         </div>
+        <h2>Assigner une tache</h2>
+        <div class="card">
+            {{-- <form action="{{ route('todos.assign', $todo->id) }}" method="post"> --}}
+            @csrf
+            <div class="form-group
+                    <label for="user">Utilisateur</label>
+                <select id="person" name="person">
+                    <option value="" disabled selected>Choisissez un utilisateur</option>
+                    @foreach ($persons as $person)
+                        <option value="{{ $person->id }}">{{ $person->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Assigner</button>
+                <button type="button" class="btn-secondary" id="cancelBtn">Annuler</button>
+            </div>
+            {{-- </form> --}}
+        </div>
     </div>
 @endsection
