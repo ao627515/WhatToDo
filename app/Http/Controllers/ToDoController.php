@@ -2,24 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Todo;
+use Illuminate\Http\Request;
+use App\Services\CategorySerivce;
 use App\Http\Requests\StoreToDoRequest;
 use App\Http\Requests\UpdateToDoRequest;
 use App\Interfaces\Services\ToDoServiceInterface;
-use App\Models\Todo;
-use App\Services\CategorySerivce;
-use Illuminate\Http\Request;
+use App\Interfaces\Services\PersonServiceInterface;
+use App\Interfaces\Services\CategoryServiceInterface;
 
 class ToDoController extends Controller
 {
     private ToDoServiceInterface $toDoService;
-    private CategorySerivce $categoryService;
+    private CategoryServiceInterface $categoryService;
+    private PersonServiceInterface $personService;
 
     public function __construct(
         ToDoServiceInterface $toDoService,
-        CategorySerivce $categoryService
+        CategoryServiceInterface $categoryService,
+        PersonServiceInterface $personService
+
+
     ) {
         $this->toDoService = $toDoService;
         $this->categoryService = $categoryService;
+        $this->personService = $personService;
     }
 
 
@@ -84,7 +91,10 @@ class ToDoController extends Controller
      */
     public function show(Todo $todo)
     {
-        //
+        return view('pages.todos.todos-show', [
+            'todo' => $todo,
+            'persons' => $this->personService->index(),
+        ]);
     }
 
     /**
@@ -110,6 +120,6 @@ class ToDoController extends Controller
     public function toggleCompleted(int|string $todo)
     {
         $this->toDoService->toggleCompleted($todo);
-        return to_route('todos.index')->with('success', 'ToDo updated successfully.');
+        return redirect()->back()->with('success', 'ToDo updated successfully.');
     }
 }

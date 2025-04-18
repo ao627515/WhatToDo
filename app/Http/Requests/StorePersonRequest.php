@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Enum\GenderEnum;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StorePersonRequest extends FormRequest
@@ -11,7 +12,7 @@ class StorePersonRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,12 @@ class StorePersonRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'lastname' => ['required', 'string', 'max:255'],
+            'firstname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255', 'unique:people'],
+            'gender' => ['required', 'string', 'max:1', 'in:' . implode(',', GenderEnum::getValues())],
+            'birthdate' => ['required', 'date'],
+            'birthplace' => ['required', 'string', 'max:255'],
         ];
     }
 }

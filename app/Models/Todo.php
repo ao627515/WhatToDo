@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\Category;
+use App\Models\TodoAssigned;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
@@ -44,5 +45,28 @@ class Todo extends Model
         return Attribute::make(
             get: fn($value, $attributes) => $attributes['completed'] ? 'completed' : 'in-progress'
         );
+    }
+
+
+    /**
+     * Relation avec les personnes assignées à cette tâche via la table pivot
+     */
+    public function assignedPeople()
+    {
+        return $this->belongsToMany(
+            Person::class,
+            'todos_assigned',
+            'todo_assigned_id',
+            'person_assigned_id'
+        )
+            ->using(TodoAssigned::class);
+    }
+
+    /**
+     * Accès direct à toutes les assignations de cette tâche
+     */
+    public function assignments()
+    {
+        return $this->hasMany(TodoAssigned::class, 'todo_assigned_id');
     }
 }

@@ -2,18 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\GenderEnum;
 use App\Http\Requests\StorePersonRequest;
 use App\Http\Requests\UpdatePersonRequest;
+use App\Interfaces\Services\PersonServiceInterface;
 use App\Models\Person;
 
 class PersonController extends Controller
 {
+
+    private PersonServiceInterface $personService;
+
+    public function __construct(PersonServiceInterface $personService)
+    {
+        $this->personService = $personService;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        //     dd('index');
+
+        $people = $this->personService->index();
+
+        return view(
+            'pages.people.people-index',
+            compact('people')
+        );
     }
 
     /**
@@ -21,7 +38,13 @@ class PersonController extends Controller
      */
     public function create()
     {
-        //
+        $genders = GenderEnum::getLabelsWithValues();
+        return view(
+            'pages.people.people-create',
+            compact(
+                'genders'
+            )
+        );
     }
 
     /**
@@ -29,7 +52,10 @@ class PersonController extends Controller
      */
     public function store(StorePersonRequest $request)
     {
-        //
+        $data =   $request->validated();
+        $this->personService->store($data);
+
+        return redirect()->route('people.index');
     }
 
     /**
@@ -45,15 +71,23 @@ class PersonController extends Controller
      */
     public function edit(Person $person)
     {
-        //
+        $genders = GenderEnum::getLabelsWithValues();
+
+        return view(
+            'pages.people.people-edit',
+            compact('genders', 'person')
+        );
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePersonRequest $request, Person $person)
+    public function update(UpdatePersonRequest $request, int $person)
     {
-        //
+        $data =   $request->validated();
+        $this->personService->update($person, $data);
+
+        return redirect()->route('people.index');
     }
 
     /**
@@ -61,6 +95,8 @@ class PersonController extends Controller
      */
     public function destroy(Person $person)
     {
-        //
+        $this->personService->destroy($person->id);
+
+        return redirect()->route('people.index');
     }
 }

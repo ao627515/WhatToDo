@@ -21,11 +21,11 @@ Route::middleware('auth')->group(function () {
     Route::redirect('/', '/todos');
     Route::redirect('todos/reset', '/todos')->name('todos.reset');
     Route::patch('todos/{todo}/toogle/completed', [ToDoController::class, 'toggleCompleted'])->name('todos.toggle.completed');
-    Route::resource('todos', ToDoController::class)->except(['show']);
+    Route::resource('todos', ToDoController::class);
 
     Route::post('signout', [AuthController::class, 'signout'])->name('signout');
 
     Route::resource('categories', CategoryController::class)->except(['show', 'create', 'edit']);
 
-    Route::reesource('people', PersonController::class);
+    Route::resource('people', PersonController::class);
 });

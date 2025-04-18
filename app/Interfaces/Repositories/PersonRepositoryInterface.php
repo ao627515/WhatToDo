@@ -1,0 +1,10 @@
+<?php
+
+namespace App\Interfaces\Repositories;
+
+use App\Interfaces\Repositories\Methods\CreateInterface;
+use App\Interfaces\Repositories\Methods\DeleteInterface;
+use App\Interfaces\Repositories\Methods\GetByIdInterface;
+use App\Interfaces\Repositories\Methods\QueryInterface;
+
+interface PersonRepositoryInterface extends QueryInterface, CreateInterface, GetByIdInterface, DeleteInterface {}
