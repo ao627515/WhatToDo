@@ -12,6 +12,7 @@
         <a href="{{ route('todos.edit', $todo->id) }}">
             <button class="btn-icon edit-btn">✏️</button>
         </a>
+        <a class="btn-icon" href="{{ route('todos.show', $todo->id) }}">👁️</a>
         <button class="btn-icon delete-btn" onclick="deleteTask({{ $todo->id }})">🗑️</button>
         <button class="btn-icon info-btn" title="{{ $todo->description }}">ℹ️</button>
     </div>

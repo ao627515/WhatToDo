@@ -84,7 +84,9 @@ class ToDoController extends Controller
      */
     public function show(Todo $todo)
     {
-        //
+        return view('pages.todos.todos-show', [
+            'todo' => $todo,
+        ]);
     }
 
     /**
@@ -110,6 +112,6 @@ class ToDoController extends Controller
     public function toggleCompleted(int|string $todo)
     {
         $this->toDoService->toggleCompleted($todo);
-        return to_route('todos.index')->with('success', 'ToDo updated successfully.');
+        return redirect()->back()->with('success', 'ToDo updated successfully.');
     }
 }

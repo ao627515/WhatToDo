@@ -7,7 +7,9 @@
             <div class="title">
                 <h3>Titre</h3>
                 <div class="title-container">
-                    <form action="" method="post">
+                    <form action="{{ route('todos.toggle.completed', $todo->id) }}" method="post">
+                        @csrf
+                        @method('PATCH')
                         <div onclick="this.closest('form').submit()"
                             class="task-checkbox {{ $todo->completed ? 'completed' : '' }}"></div>
                     </form>
@@ -35,7 +37,7 @@
                     <button class="btn-icon">✏️</button>
                 </a>
                 <a class="btn-icon" href="{{ route('todos.show', $todo->id) }}">👁️</a>
-                <form action="" method="post">
+                <form action="{{ route('todos.destroy', $todo->id) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button class="btn-icon">🗑️</button>
