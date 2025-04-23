@@ -2,6 +2,7 @@
 
 namespace App\Interfaces\Services;
 
+use App\Interfaces\Services\Methods\AssignToPeopleInterface;
 use App\Interfaces\Services\Methods\DestroyInterface;
 use App\Interfaces\Services\Methods\IndexInterface;
 use App\Interfaces\Services\Methods\ShowInterface;
@@ -15,4 +16,5 @@ interface ToDoServiceInterface extends
     DestroyInterface,
     ShowInterface,
     UpdateInterface,
-    ToggleCompletedInterface {}
+    ToggleCompletedInterface,
+    AssignToPeopleInterface {}

@@ -59,7 +59,10 @@ class Todo extends Model
             'todo_assigned_id',
             'person_assigned_id'
         )
+            ->as('todoAssigned')
+            ->withPivot('assigned_at')
             ->using(TodoAssigned::class);
+        // ->withPivot('assigned_at');
     }
 
     /**

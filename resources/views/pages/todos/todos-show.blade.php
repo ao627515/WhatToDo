@@ -46,22 +46,90 @@
         </div>
         <h2>Assigner une tache</h2>
         <div class="card">
-            {{-- <form action="{{ route('todos.assign', $todo->id) }}" method="post"> --}}
-            @csrf
-            <div class="form-group
-                    <label for="user">Utilisateur</label>
-                <select id="person" name="person">
-                    <option value="" disabled selected>Choisissez un utilisateur</option>
-                    @foreach ($persons as $person)
-                        <option value="{{ $person->id }}">{{ $person->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-actions">
-                <button type="submit" class="btn-primary">Assigner</button>
-                <button type="button" class="btn-secondary" id="cancelBtn">Annuler</button>
-            </div>
-            {{-- </form> --}}
+            <form action="{{ route('todos.assign.to.people', $todo->id) }}" method="post">
+                @csrf
+
+                <div class="form-group">
+                    <label for="people">Utilisateur</label>
+                    <select id="people" name="people[]" multiple>
+                        <option value="" disabled {{ old('people', !empty($peopleAssignedIds)) ? '' : 'selected' }}>
+                            Choisissez un utilisateur
+                        </option>
+                        @foreach ($people as $person)
+                            <option value="{{ $person->id }}"
+                                {{ in_array($person->id, old('people', null) ?? $peopleAssignedIds) ? 'selected' : '' }}>
+                                {{ $person->name }}
+                            </option>
+                        @endforeach
+                    </select>
+
+                    @error('people')
+                        <div class="error-message">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Assigner</button>
+                    <button type="button" class="btn-secondary" id="cancelBtn">Annuler</button>
+                </div>
+            </form>
+
+        </div>
+        <h2>Liste des personnes</h2>
+        <div class="card">
+            @if ($peopleAssigned->isEmpty())
+                <div class="empty-state" id="emptyState">
+                    {{-- <img src="/api/placeholder/120/120" alt="Liste vide"> --}}
+                    <h3>Aucune personne pour le moment</h3>
+                    <p>Ajoutez votre première personne pour commencer</p>
+                    {{-- <button class="btn-primary" id="emptyStateAddBtn">Ajouter une personne</button> --}}
+                </div>
+            @else
+                <form action="{{ route('todos.assign.to.people', $todo->id) }}" method="post" id="detachForm">
+                    @csrf
+                    <table>
+                        <thead>
+                            <th></th>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>Date Nais.</th>
+                            <th>Lieu Nais.</th>
+                            <th>Genre</th>
+                            <th>Assigner le </th>
+                        </thead>
+                        <tbody>
+                            @foreach ($peopleAssigned as $person)
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="people[]" id="" value="{{ $person->id }}"
+                                            checked>
+                                    </td>
+                                    <td>{{ $person->name }}</td>
+                                    <td>{{ $person->email }}</td>
+                                    <td>{{ $person->birthdate->format('d-m-Y') }}</td>
+                                    <td>{{ $person->birthplace }}</td>
+                                    <td>{{ $person->gender }}</td>
+                                    <td>{{ $person->todoAssigned->assigned_at }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                            <th></th>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>Date Nais.</th>
+                            <th>Lieu Nais.</th>
+                            <th>Genre</th>
+                            <th>Assigner le </th>
+                        </tfoot>
+                    </table>
+                </form>
+                <div class="">
+                    {{-- <form action="" method="post"> --}}
+                    <button class="btn-primary" form="detachForm">Detacher</button>
+                    {{-- </form> --}}
+                </div>
+            @endif
         </div>
     </div>
 @endsection

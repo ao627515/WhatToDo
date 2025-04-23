@@ -93,7 +93,9 @@ class ToDoController extends Controller
     {
         return view('pages.todos.todos-show', [
             'todo' => $todo,
-            'persons' => $this->personService->index(),
+            'people' => $this->personService->index(),
+            'peopleAssigned' => $todo->assignedPeople,
+            'peopleAssignedIds' => $todo->assignedPeople->pluck('id')->toArray(),
         ]);
     }
 
@@ -120,6 +122,17 @@ class ToDoController extends Controller
     public function toggleCompleted(int|string $todo)
     {
         $this->toDoService->toggleCompleted($todo);
+        return redirect()->back()->with('success', 'ToDo updated successfully.');
+    }
+
+    public function assignToPeople(int|string $todo, Request $request)
+    {
+        // dd($request->all());
+        $validatedData = $request->validate([
+            'people' => 'required|array',
+            'people.*' => 'integer|exists:people,id',
+        ]);
+        $this->toDoService->assignToPeople($todo, $validatedData['people']);
         return redirect()->back()->with('success', 'ToDo updated successfully.');
     }
 }

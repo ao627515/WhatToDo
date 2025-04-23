@@ -6,8 +6,9 @@ use App\Models\Todo;
 use App\Models\User;
 use App\Models\Person;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class TodoAssigned extends Model
+class TodoAssigned extends Pivot
 {
     protected $table = 'todos_assigned';
 
