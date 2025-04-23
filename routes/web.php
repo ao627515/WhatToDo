@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
     Route::redirect('/', '/todos');
     Route::redirect('todos/reset', '/todos')->name('todos.reset');
     Route::patch('todos/{todo}/toogle/completed', [ToDoController::class, 'toggleCompleted'])->name('todos.toggle.completed');
+    Route::post('todos/{todo}/assign', [ToDoController::class, 'assignToPeople'])->name('todos.assign.to.people');
     Route::resource('todos', ToDoController::class);
 
     Route::post('signout', [AuthController::class, 'signout'])->name('signout');

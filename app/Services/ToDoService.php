@@ -87,4 +87,14 @@ class ToDoService implements ToDoServiceInterface
             'todo' => $todo,
         ];
     }
+
+    public function assignToPeople(int|string $id, array $peopleIds = [])
+    {
+        $todo = $this->toDoRepository->getById($id);
+        $todo->assignedPeople()
+            ->syncWithPivotValues($peopleIds, [
+                'assigned_by_id' => Auth::id(),
+            ]);
+        return $todo;
+    }
 }
